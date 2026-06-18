@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoxIntel | Intelligent Validation & Survey Canvas</title>
+    
+    <!-- Standard Clean Inter Font: Professional, modern, and highly legible -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- External CSS Framework Utilities -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="Home_Page.css">
+</head>
+<body class="antialiased">
+
+    <!-- Theme State Controllers (CSS sibling triggers placed at document root) -->
+    <input type="radio" name="theme" id="theme-orange" class="hidden" checked>
+    <input type="radio" name="theme" id="theme-purple" class="hidden">
+    <input type="radio" name="theme" id="theme-teal" class="hidden">
+
+    <!-- Main Dynamic Application Container -->
+    <div id="app-container" class="theme-bg text-main min-h-screen flex flex-col justify-between">
+
+        <header class="border-b border-brut py-3 sticky top-0 theme-bg z-50">
+            <div class="container mx-auto px-4 flex justify-between items-center">
+                
+                <!-- 50% FromBrics + 50% Typeform Compact Hover Logo -->
+                <div class="logo-wrap" title="Hover to view full identity">
+                    <svg class="w-6 h-6 text-main flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke-dasharray="2 1"></rect>
+                        <path d="M9 17c2-3 4-3 6 0" stroke="var(--accent-color)" stroke-width="3"></path>
+                    </svg>
+                    <span class="logo-text-reveal">VOX INTELLIGENCE</span>
+                </div>
+
+                <!-- FromBricks Navigation style (directly maps to anchors) -->
+                <nav class="hidden md:flex space-x-6 items-center font-bold text-xs">
+                    <a href="#feature-auditor" class="hover:accent-text transition uppercase tracking-wide">01. AI Auditor</a>
+                    <a href="#feature-trust" class="hover:accent-text transition uppercase tracking-wide">02. Integrity Shield</a>
+                    <a href="#feature-sentiment" class="hover:accent-text transition uppercase tracking-wide">03. Sentiment Engine</a>
+                    <a href="#theme-configurator" class="hover:accent-text transition uppercase tracking-wide">04. Workspace Brand</a>
+                </nav>
+
+                <!-- Navigation Actions -->
+                <div class="flex items-center space-x-3">
+                    <a href="#theme-configurator" class="btn-accent px-4 py-2 text-xs uppercase tracking-wide">
+                        Configurator
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <section class="border-b border-brut py-16 md:py-24 relative overflow-hidden">
+            <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: linear-gradient(var(--border-color) 1px, transparent 1px), linear-gradient(90deg, var(--border-color) 1px, transparent 1px); background-size: 24px 24px;"></div>
+
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="row align-items-center g-5">
+                    
+                    <!-- Left Hero Core Messaging -->
+                    <div class="col-lg-7 text-left space-y-6">
+                        <div class="pill-badge">
+                            <span class="flex h-2 w-2 bg-green-500 rounded-full mr-2"></span>
+                            ACTIVE MERN ENGINE
+                        </div>
+                        
+                        <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-none text-main">
+                            The Intelligent <br>
+                            <span class="accent-text">Validation</span> & <br>
+                            Survey Canvas.
+                        </h1>
+
+                        <p class="text-sm md:text-base text-sub max-w-xl font-normal leading-relaxed">
+                            Audit dynamic question bias prior to submission. Filter systemic response fraud natively, bypass anonymous registration barriers, and analyze natural sentiment pipelines instantly.
+                        </p>
+
+                        <!-- Action Controls (Anchored directly to vertical sections) -->
+                        <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                            <a href="#theme-configurator" class="btn-accent text-center px-6 py-3 text-xs uppercase tracking-wide">
+                                Launch Interactive Canvas <i class="fa-solid fa-wand-magic-sparkles ml-1"></i>
+                            </a>
+                            <a href="#feature-auditor" class="btn-flat text-center px-6 py-3 text-xs uppercase tracking-wide">
+                                Explore Pipeline Flow
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Clean Typeform Conversation Vibe Mockup -->
+                    <div class="col-lg-5">
+                        <div class="theme-card card-brut p-5 relative">
+                            <div class="flex justify-between items-center pb-3 mb-4 border-b border-brut">
+                                <div class="flex space-x-1.5">
+                                    <span class="w-2 h-2 bg-red-500 block rounded-full"></span>
+                                    <span class="w-2 h-2 bg-yellow-500 block rounded-full"></span>
+                                    <span class="w-2 h-2 bg-green-500 block rounded-full"></span>
+                                </div>
+                                <span class="text-[10px] font-mono text-sub">validation-builder.json</span>
+                            </div>
+
+                            <div class="space-y-4">
+                                <div class="accent-text font-bold text-[10px] tracking-wider uppercase">Question 04 / 10 • Experience Scoring</div>
+                                <div class="text-sm font-bold leading-snug">How fast does your team parse and validate client-submitted survey data?</div>
+                                
+                                <!-- Minimal Rating Array -->
+                                <div class="grid grid-cols-6 gap-2 pt-1">
+                                    <div class="nps-box">0</div>
+                                    <div class="nps-box">2</div>
+                                    <div class="nps-box">4</div>
+                                    <div class="nps-box">6</div>
+                                    <div class="nps-box">8</div>
+                                    <div class="nps-box bg-white text-black border-brut">10</div>
+                                </div>
+                                
+                                <div class="pt-3 border-t border-brut flex justify-between items-center text-[10px] text-sub">
+                                    <span><i class="fa-solid fa-shield-check text-green-400 mr-1"></i> Shield Active</span>
+                                    <span>ID: <code class="accent-text font-mono">vox_909x</code></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CORE CAPABILITIES FLOW (Formbricks-style visual pipeline) -->
+        <section class="border-b border-brut py-16 theme-bg">
+            <div class="container mx-auto px-4 max-w-4xl">
+                
+                <div class="text-center mb-12">
+                    <span class="accent-text text-xs tracking-wider font-bold uppercase">The Continuous Validation Pipeline</span>
+                    <h2 class="text-2xl md:text-4xl font-extrabold tracking-tight text-main mt-2">How VoxIntel Secures Data</h2>
+                    <p class="text-xs text-sub max-w-md mx-auto mt-2">A cohesive system mapping automated operations throughout the entire user response cycle.</p>
+                </div>
+
+                <!-- Node 1: AI Survey Auditor Section -->
+                <div id="feature-auditor" class="scroll-m-24">
+                    <div class="flow-circle">1</div>
+                    <div class="flow-line"></div>
+                    
+                    <div class="theme-card card-brut p-6 md:p-8">
+                        <div class="row align-items-center g-4">
+                            <div class="col-md-7 space-y-4">
+                                <div class="pill-badge">Pre-Collection Pipeline</div>
+                                <h3 class="text-lg md:text-xl font-bold text-main">AI Survey Quality Auditor</h3>
+                                <p class="text-xs text-sub leading-relaxed">
+                                    Before launch, our cognitive parser monitors question formulations to isolate structural design bias. It automatically drafts neutral alternatives so answers stay clean and precise.
+                                </p>
+                                <div class="flex space-x-3 pt-2">
+                                    <span class="text-[11px] text-sub font-semibold"><i class="fa-regular fa-circle-check accent-text mr-1"></i> Form Bias Index Calculation</span>
+                                    <span class="text-[11px] text-sub font-semibold"><i class="fa-regular fa-circle-check accent-text mr-1"></i> Auto-Correction Suggests</span>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="p-3 bg-red-950/20 border border-red-900/40 rounded-lg text-xs space-y-2">
+                                    <span class="text-[9px] font-bold text-red-400 uppercase tracking-wider block">Leading Phrasing Flagged</span>
+                                    <p class="text-main italic">"Arent you pleased with our faster checkout?"</p>
+                                    <div class="pt-2 border-t border-red-900/40 text-[9px] text-emerald-400 font-bold uppercase">Suggested Neutral Output:</div>
+                                    <p class="text-main">"How would you rate the speed of our checkout process?"</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Node 2: Response Trust Section -->
+                <div id="feature-trust" class="scroll-m-24 mt-1">
+                    <div class="flow-line"></div>
+                    <div class="flow-circle">2</div>
+                    <div class="flow-line"></div>
+                    
+                    <div class="theme-card card-brut p-6 md:p-8">
+                        <div class="row align-items-center g-4">
+                            <div class="col-md-5 order-last order-md-first">
+                                <div class="p-3 bg-slate-900/50 border border-brut rounded-lg text-xs space-y-2">
+                                    <div class="flex justify-between items-center text-[9px] text-sub font-mono">
+                                        <span>HASH_DECRYPT</span>
+                                        <span class="text-red-400 font-bold">BLOCKED</span>
+                                    </div>
+                                    <div class="space-y-1 font-mono text-[10px]">
+                                        <div class="flex justify-between">
+                                            <span class="text-sub">F-Print:</span>
+                                            <span class="text-main">88a2b1f8</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-sub">Velocity:</span>
+                                            <span class="text-red-400">0.14s (Script)</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-sub">Identity:</span>
+                                            <span class="text-main">Anonymous</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-7 space-y-4">
+                                <div class="pill-badge">Submission Protection</div>
+                                <h3 class="text-lg md:text-xl font-bold text-main">Response Trust & Fraud Engine</h3>
+                                <p class="text-xs text-sub leading-relaxed">
+                                    Runs background browser finger-printing and records response speeds during text and rating submissions. Blocks and filters out repetitive scripts, automated bots, and straight-line spam patterns instantly.
+                                </p>
+                                <div class="flex space-x-3 pt-2">
+                                    <span class="text-[11px] text-sub font-semibold"><i class="fa-regular fa-circle-check accent-text mr-1"></i> Multi-Point Browser Signatures</span>
+                                    <span class="text-[11px] text-sub font-semibold"><i class="fa-regular fa-circle-check accent-text mr-1"></i> High-Speed Click Filtering</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Node 3: Decision Intelligence Section -->
+                <div id="feature-sentiment" class="scroll-m-24 mt-1">
+                    <div class="flow-line"></div>
+                    <div class="flow-circle">3</div>
+                    <div class="flow-line"></div>
+                    
+                    <div class="theme-card card-brut p-6 md:p-8">
+                        <div class="row align-items-center g-4">
+                            <div class="col-md-7 space-y-4">
+                                <div class="pill-badge">Post-Collection Logic</div>
+                                <h3 class="text-lg md:text-xl font-bold text-main">Feedback-to-Decision Intelligence</h3>
+                                <p class="text-xs text-sub leading-relaxed">
+                                    Evaluates open-ended feedback values dynamically using natural language modules. Automatically tags structural patterns, categorizes general emotions, and updates graphical analytics in real time.
+                                </p>
+                                <div class="flex space-x-3 pt-2">
+                                    <span class="text-[11px] text-sub font-semibold"><i class="fa-regular fa-circle-check accent-text mr-1"></i> Real-Time Tone Classification</span>
+                                    <span class="text-[11px] text-sub font-semibold"><i class="fa-regular fa-circle-check accent-text mr-1"></i> Automatic Semantic Groupings</span>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="p-3 bg-emerald-950/20 border border-emerald-900/40 rounded-lg text-xs space-y-2">
+                                    <div class="flex justify-between items-center text-[9px] text-emerald-400 font-bold uppercase">
+                                        <span>NLP Processing</span>
+                                        <span>Success</span>
+                                    </div>
+                                    <p class="text-main font-semibold italic text-[11px]">"The platform setup is lightning fast but dark mode contrast is slightly low..."</p>
+                                    <div class="grid grid-cols-2 gap-2 pt-2">
+                                        <div class="bg-black/30 p-1.5 rounded text-center">
+                                            <span class="text-[8px] text-sub block">SENTIMENT</span>
+                                            <span class="accent-text font-bold text-[10px]">Mixed</span>
+                                        </div>
+                                        <div class="bg-black/30 p-1.5 rounded text-center">
+                                            <span class="text-[8px] text-sub block">TOPIC</span>
+                                            <span class="text-main font-bold text-[10px]">UI Display</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Node 4: Dynamic Theme Switcher Section -->
+                <div id="theme-configurator" class="scroll-m-24 mt-1">
+                    <div class="flow-line"></div>
+                    <div class="flow-circle">4</div>
+                    <div class="flow-line"></div>
+
+                    <div class="theme-card card-brut p-6 md:p-8">
+                        <div class="row align-items-center g-4">
+                            <div class="col-md-5 text-center">
+                                <span class="text-[10px] font-bold text-sub block mb-3 uppercase tracking-wider">Select Brand Profile</span>
+                                <div class="inline-flex space-x-4 p-3 bg-black/40 border border-brut rounded-full">
+                                    <label for="theme-orange" class="color-dot bg-[#ff5a00]" title="Obsidian Orange"></label>
+                                    <label for="theme-purple" class="color-dot bg-[#a78bfa]" title="Royal Amethyst"></label>
+                                    <label for="theme-teal" class="color-dot bg-[#22d3ee]" title="Cyber Teal"></label>
+                                </div>
+                            </div>
+                            <div class="col-md-7 space-y-4">
+                                <div class="pill-badge">Workspace Brand Control</div>
+                                <h3 class="text-lg md:text-xl font-bold text-main">Interactive Workspace Playground</h3>
+                                <p class="text-xs text-sub leading-relaxed">
+                                    Test the native zero-JS rendering capabilities of VoxIntel. Toggle color swatches globally and watch the entire component canvas transform colors, gradients, and shadow lines seamlessly.
+                                </p>
+                                <p class="text-[10px] text-sub italic">
+                                    *The swatches on the left leverage structural CSS parent-sibling triggers to modify color values instantaneously without a single line of JavaScript.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- BOTTOM CTA SECTION -->
+        <section class="border-b border-brut py-16 theme-bg relative">
+            <div class="container mx-auto px-4 text-center max-w-2xl space-y-6">
+                <h3 class="text-2xl md:text-4xl font-extrabold tracking-tight text-main">
+                    Set up VoxIntel in minutes.
+                </h3>
+                <p class="text-xs text-sub max-w-md mx-auto">
+                    Configure your surveys, audit lead generation pipelines, and gather trusted validation data under a single unified dashboard.
+                </p>
+                <div class="flex justify-center space-x-4 pt-2">
+                    <a href="#theme-configurator" class="btn-accent px-6 py-3 text-xs uppercase tracking-wide">
+                        Create Workspace
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SYSTEM FOOTER -->
+        <footer class="border-t border-brut py-10 theme-bg">
+            <div class="container mx-auto px-4">
+                <div class="row g-4 justify-content-between items-center">
+                    
+                    <div class="col-md-6 text-left space-y-2">
+                        <span class="text-sm font-extrabold tracking-tight text-main">VOXINTEL</span>
+                        <p class="text-[11px] text-sub max-w-sm leading-relaxed">
+                            MERN Stack cognitive interaction pathways mapping unstructured validation pipelines natively in real-time.
+                        </p>
+                    </div>
+
+                    <div class="col-md-4 text-center md:text-end">
+                        <div class="inline-flex items-center space-x-2 border border-brut px-3 py-1 bg-black/40 rounded-lg">
+                            <span class="flex h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                            <span class="text-[9px] font-bold">OPERATIONAL STATUS: SECURE</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="border-t border-brut mt-8 pt-6 flex flex-col sm:flex-row justify-between items-center text-[11px] text-sub gap-3">
+                    <span>© 2026 VoxIntel Inc. All computational rights reserved.</span>
+                    <div class="flex space-x-4">
+                        <a href="#" class="hover:accent-text transition">Security Protocols</a>
+                        <a href="#" class="hover:accent-text transition">API Reference</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>
