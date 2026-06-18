@@ -1,5 +1,4 @@
-
-        /* Base Page Configurations */
+        /* Base page settings setup ho rha hai */
         html {
             scroll-behavior: smooth;
         }
@@ -11,8 +10,8 @@
             background-color: var(--bg-color);
         }
 
-        /* Pure CSS Dynamic Variables Mapping for 3 Color Themes */
-        /* Theme 1: Obsidian Orange (Default Theme) */
+        /* Pure CSS dynamic variables map ho rhe hain bina kisi JS ke */
+        /* Theme 1: Obsidian Orange (Default dark theme settings) */
         #theme-orange:checked ~ #app-container {
             --bg-color: #09090b;
             --card-color: #121214;
@@ -24,7 +23,7 @@
             --shadow-color: rgba(255, 90, 0, 0.25);
         }
 
-        /* Theme 2: Royal Amethyst */
+        /* Theme 2: Royal Amethyst setting (Purple neon gradient vibe) */
         #theme-purple:checked ~ #app-container {
             --bg-color: #0a0514;
             --card-color: #130c22;
@@ -36,7 +35,7 @@
             --shadow-color: rgba(167, 139, 250, 0.25);
         }
 
-        /* Theme 3: Cyber Teal */
+        /* Theme 3: Cyber Teal setting (Sleek cyan styling) */
         #theme-teal:checked ~ #app-container {
             --bg-color: #030a0d;
             --card-color: #091317;
@@ -48,7 +47,7 @@
             --shadow-color: rgba(34, 211, 238, 0.25);
         }
 
-        /* Decent & Short CSS Classes (Optimized for performance) */
+        /* Custom CSS classes performance load optimize karne ke liye */
         .theme-bg {
             background-color: var(--bg-color);
             transition: background 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -68,7 +67,7 @@
             transition: color 0.4s ease;
         }
 
-        /* Light Brutalist Elements - 10% Lighter and Curved Profiles */
+        /* Light Brutalist layout elements: Corners and subtle shadows */
         .border-brut {
             border: 1.5px solid var(--border-color) !important;
         }
@@ -127,7 +126,7 @@
             border-radius: 6px;
         }
 
-        /* 50/50 FromBrics + Typeform Inspired Compact Logo */
+        /* Custom brand logo: 50/50 Frombricks aur Typeform style */
         .logo-wrap {
             display: inline-flex;
             align-items: center;
@@ -160,7 +159,7 @@
             transform: translateX(0);
         }
 
-        /* Formbricks-Style Connectors & Flow Vectors */
+        /* Formbricks style progress nodes and connection vectors */
         .flow-line {
             width: 2px;
             height: 40px;
@@ -184,7 +183,7 @@
             box-shadow: 0 0 10px var(--shadow-color);
         }
 
-        /* Typeform Rating Elements */
+        /* Typeform dynamic style scoring options */
         .nps-box {
             border: 1.5px solid var(--border-color);
             background-color: var(--bg-color);
@@ -203,7 +202,7 @@
             transform: translateY(-1px);
         }
 
-        /* Custom Theme Radio Visualizers */
+        /* Custom theme selection inputs look setup */
         .color-dot {
             width: 32px;
             height: 32px;
@@ -223,3 +222,4 @@
             border-color: #ffffff !important;
             box-shadow: 0 0 12px var(--accent-color);
         }
+    

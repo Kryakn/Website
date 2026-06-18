@@ -5,32 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VoxIntel | Intelligent Validation & Survey Canvas</title>
     
-    <!-- Standard Clean Inter Font: Professional, modern, and highly legible -->
+    
+    <!-- Standerd fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- External CSS Framework Utilities -->
+    <!-- External CSS frameworks link ho rahe hain -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <link rel="stylesheet" href="Home_Page.css">
 </head>
 <body class="antialiased">
 
-    <!-- Theme State Controllers (CSS sibling triggers placed at document root) -->
+    <!-- Theme switches -->
     <input type="radio" name="theme" id="theme-orange" class="hidden" checked>
     <input type="radio" name="theme" id="theme-purple" class="hidden">
     <input type="radio" name="theme" id="theme-teal" class="hidden">
 
-    <!-- Main Dynamic Application Container -->
+    <!-- mukhy screen -->
     <div id="app-container" class="theme-bg text-main min-h-screen flex flex-col justify-between">
 
         <header class="border-b border-brut py-3 sticky top-0 theme-bg z-50">
             <div class="container mx-auto px-4 flex justify-between items-center">
                 
-                <!-- 50% FromBrics + 50% Typeform Compact Hover Logo -->
+                <!-- Custom header brand logo animation trigger layout -->
                 <div class="logo-wrap" title="Hover to view full identity">
                     <svg class="w-6 h-6 text-main flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke-dasharray="2 1"></rect>
@@ -39,7 +39,7 @@
                     <span class="logo-text-reveal">VOX INTELLIGENCE</span>
                 </div>
 
-                <!-- FromBricks Navigation style (directly maps to anchors) -->
+                <!-- Frombricks custom navigation items link mappings -->
                 <nav class="hidden md:flex space-x-6 items-center font-bold text-xs">
                     <a href="#feature-auditor" class="hover:accent-text transition uppercase tracking-wide">01. AI Auditor</a>
                     <a href="#feature-trust" class="hover:accent-text transition uppercase tracking-wide">02. Integrity Shield</a>
@@ -47,9 +47,15 @@
                     <a href="#theme-configurator" class="hover:accent-text transition uppercase tracking-wide">04. Workspace Brand</a>
                 </nav>
 
-                <!-- Navigation Actions -->
-                <div class="flex items-center space-x-3">
-                    <a href="#theme-configurator" class="btn-accent px-4 py-2 text-xs uppercase tracking-wide">
+                <!-- Top header login, signup, and action links -->
+                <div class="flex items-center space-x-2 md:space-x-3">
+                    <a href="#login" class="btn-flat px-3 py-2 text-xs uppercase tracking-wide">
+                        Log In
+                    </a>
+                    <a href="#signup" class="btn-accent px-3 py-2 text-xs uppercase tracking-wide">
+                        Sign Up
+                    </a>
+                    <a href="#theme-configurator" class="btn-flat px-3 py-2 text-xs uppercase tracking-wide hidden lg:inline-block">
                         Configurator
                     </a>
                 </div>
@@ -62,7 +68,7 @@
             <div class="container mx-auto px-4 relative z-10">
                 <div class="row align-items-center g-5">
                     
-                    <!-- Left Hero Core Messaging -->
+                    <!-- Screen ka left hero marketing section -->
                     <div class="col-lg-7 text-left space-y-6">
                         <div class="pill-badge">
                             <span class="flex h-2 w-2 bg-green-500 rounded-full mr-2"></span>
@@ -79,7 +85,7 @@
                             Audit dynamic question bias prior to submission. Filter systemic response fraud natively, bypass anonymous registration barriers, and analyze natural sentiment pipelines instantly.
                         </p>
 
-                        <!-- Action Controls (Anchored directly to vertical sections) -->
+                        <!-- Dynamic workflow key navigations triggers -->
                         <div class="flex flex-col sm:flex-row gap-3 pt-2">
                             <a href="#theme-configurator" class="btn-accent text-center px-6 py-3 text-xs uppercase tracking-wide">
                                 Launch Interactive Canvas <i class="fa-solid fa-wand-magic-sparkles ml-1"></i>
@@ -90,7 +96,7 @@
                         </div>
                     </div>
 
-                    <!-- Right Side: Clean Typeform Conversation Vibe Mockup -->
+                    <!-- Interactive UI question mockup dashboard -->
                     <div class="col-lg-5">
                         <div class="theme-card card-brut p-5 relative">
                             <div class="flex justify-between items-center pb-3 mb-4 border-b border-brut">
@@ -99,14 +105,14 @@
                                     <span class="w-2 h-2 bg-yellow-500 block rounded-full"></span>
                                     <span class="w-2 h-2 bg-green-500 block rounded-full"></span>
                                 </div>
-                                <span class="text-[10px] font-mono text-sub">validation-builder.json</span>
+                                <span class="text-[10px] font-mono text-sub">validation</span>
                             </div>
 
                             <div class="space-y-4">
                                 <div class="accent-text font-bold text-[10px] tracking-wider uppercase">Question 04 / 10 • Experience Scoring</div>
                                 <div class="text-sm font-bold leading-snug">How fast does your team parse and validate client-submitted survey data?</div>
                                 
-                                <!-- Minimal Rating Array -->
+                                <!-- Survey selection ratings bar -->
                                 <div class="grid grid-cols-6 gap-2 pt-1">
                                     <div class="nps-box">0</div>
                                     <div class="nps-box">2</div>
@@ -118,7 +124,7 @@
                                 
                                 <div class="pt-3 border-t border-brut flex justify-between items-center text-[10px] text-sub">
                                     <span><i class="fa-solid fa-shield-check text-green-400 mr-1"></i> Shield Active</span>
-                                    <span>ID: <code class="accent-text font-mono">vox_909x</code></span>
+                                    <span>ID: <code class="accent-text font-mono">Aryan1304</code></span>
                                 </div>
                             </div>
                         </div>
@@ -127,7 +133,8 @@
             </div>
         </section>
 
-        <!-- CORE CAPABILITIES FLOW (Formbricks-style visual pipeline) -->
+
+        <!-- from bric ka section feature -->
         <section class="border-b border-brut py-16 theme-bg">
             <div class="container mx-auto px-4 max-w-4xl">
                 
@@ -137,7 +144,7 @@
                     <p class="text-xs text-sub max-w-md mx-auto mt-2">A cohesive system mapping automated operations throughout the entire user response cycle.</p>
                 </div>
 
-                <!-- Node 1: AI Survey Auditor Section -->
+                <!-- Node 1: AI bias correction pipeline panel -->
                 <div id="feature-auditor" class="scroll-m-24">
                     <div class="flow-circle">1</div>
                     <div class="flow-line"></div>
@@ -167,7 +174,7 @@
                     </div>
                 </div>
 
-                <!-- Node 2: Response Trust Section -->
+                <!-- Node 2: Live protection analysis card details -->
                 <div id="feature-trust" class="scroll-m-24 mt-1">
                     <div class="flow-line"></div>
                     <div class="flow-circle">2</div>
@@ -212,7 +219,7 @@
                     </div>
                 </div>
 
-                <!-- Node 3: Decision Intelligence Section -->
+                <!-- Node 3: Smart NLP analysis metrics layer -->
                 <div id="feature-sentiment" class="scroll-m-24 mt-1">
                     <div class="flow-line"></div>
                     <div class="flow-circle">3</div>
@@ -254,7 +261,7 @@
                     </div>
                 </div>
 
-                <!-- Node 4: Dynamic Theme Switcher Section -->
+                <!-- Node 4: Dynamic brand swatch theme options -->
                 <div id="theme-configurator" class="scroll-m-24 mt-1">
                     <div class="flow-line"></div>
                     <div class="flow-circle">4</div>
@@ -287,7 +294,8 @@
             </div>
         </section>
 
-        <!-- BOTTOM CTA SECTION -->
+
+        <!-- Lower marketing prompt block section -->
         <section class="border-b border-brut py-16 theme-bg relative">
             <div class="container mx-auto px-4 text-center max-w-2xl space-y-6">
                 <h3 class="text-2xl md:text-4xl font-extrabold tracking-tight text-main">
@@ -304,7 +312,7 @@
             </div>
         </section>
 
-        <!-- SYSTEM FOOTER -->
+        <!-- Footer system references and details -->
         <footer class="border-t border-brut py-10 theme-bg">
             <div class="container mx-auto px-4">
                 <div class="row g-4 justify-content-between items-center">
