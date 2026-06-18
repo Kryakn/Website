@@ -1,0 +1,141 @@
+        :root {
+            --bg-main: black;
+            --bg-card: rgb(50, 47, 47);
+            --accent: orange;
+            --accent-hover: darkorange;
+            --text-main: white;
+            --text-muted: lightgray;
+            --border-color: gray;
+            --shadow-color: orange;
+            --transition: 0.2s ease;
+        }
+
+        /* Base setups aur custom scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif ;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .bg-custom {
+            background-color: var(--bg-card);
+        }
+        .btn-brand {
+            background-color: var(--accent);
+            color: black ;
+            font-weight: 700;
+            border: 1px solid var(--border-color);
+            box-shadow: 4px 4px 0px var(--shadow-color);
+            border-radius: 6px;
+            transition: all var(--transition);
+        }
+        .btn-brand:hover {
+            transform: translate(1px, 1px);
+            box-shadow: 2px 2px 0px var(--shadow-color);
+            background-color: var(--accent-hover);
+        }
+
+        /* [btn-line] Matlab border outline buttons */
+        .btn-line {
+            background-color: transparent;
+            color: var(--text-main);
+            font-weight: 700;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            transition: all var(--transition);
+        }
+        .btn-line:hover {
+            border-color: var(--accent);
+            color: var(--accent) ;
+        }
+
+        .card-brutalist {
+            border: 1.5px solid var(--border-color);
+            box-shadow: 4px 4px 0px var(--shadow-color);
+            border-radius: 8px;
+            background-color: var(--bg-card);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card-brutalist:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 5px 5px 0px var(--shadow-color);
+        }
+
+       
+        .badge-tag {
+            display: inline-flex;
+            align-items: center;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-main);
+            color: var(--accent);
+            padding: 4px 12px;
+            font-weight: 700;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-radius: 50px;
+        }
+
+        
+        .brand-logo {
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 6px 12px;
+            border-radius: 6px;
+            overflow: hidden;
+            white-space: nowrap;
+            max-width: 50px;
+            transition: max-width 0.4s cubic-bezier(0.16, 1, 0.3, 1), background var(--transition);
+        }
+        .brand-logo:hover {
+            max-width: 320px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+        }
+        .logo-text-reveal {
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: opacity 0.25s ease, transform 0.25s ease;
+            font-weight: 800;
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            color: var(--text-main);
+            margin-left: 12px;
+        }
+        .brand-logo:hover .logo-text-reveal {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        
+        .timeline-line {
+            width: 2px;
+            height: 40px;
+            background-image: linear-gradient(to bottom, var(--border-color) 50%, transparent 50%);
+            background-size: 2px 8px;
+            margin: 0 auto;
+        }
+        
+    
+        .timeline-node {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1.5px solid var(--border-color);
+            background-color: var(--bg-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--accent);
+            margin: 0 auto;
+            box-shadow: 0 0 10px var(--shadow-color);
+        }

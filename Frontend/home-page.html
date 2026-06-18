@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoxIntel | Intelligent Validation & Survey Canvas</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Basic Tailwind CSS aur Font Awesome loaded hain utilities ke liye -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="home-page.css">
+</head>
+<body class="antialiased">
+
+    <!-- Pure static application wrapper panel -->
+    <div class="app-wrapper min-h-screen flex flex-col justify-between">
+
+        <!-- ==========================================
+             SITE HEADER (Top navigation bar setup)
+             ========================================== -->
+        <header class="site-header border-b border-gray-800 py-3 sticky top-0 bg-black z-50">
+            <div class="container mx-auto px-4 flex justify-between items-center">
+                
+                <!-- Geometric brand logo jo hover pe text expand karega -->
+                <div class="brand-logo" title="Hover for identity">
+                    <svg class="w-6 h-6 stroke-orange-500 flex-shrink-0 fill-none" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke-dasharray="2 1"></rect>
+                        <path d="M9 17c2-3 4-3 6 0" stroke="orange" stroke-width="3"></path>
+                    </svg>
+                    <span class="logo-text-reveal">VOX INTERACTION INTELLIGENCE</span>
+                </div>
+
+                <!-- Navigation link endpoints mapping -->
+                <nav class="hidden md:flex space-x-6 items-center font-bold text-[11px]">
+                    <a href="#pipeline-auditor" class="nav-link">01. AI Auditor</a>
+                    <a href="#pipeline-trust" class="nav-link">02. Integrity Shield</a>
+                    <a href="#pipeline-sentiment" class="nav-link">03. Sentiment Engine</a>
+                    <a href="#pipeline-brand" class="nav-link">04. Brand Core</a>
+                </nav>
+
+                <!-- Actions aur registration buttons layout -->
+                <div class="flex items-center space-x-2">
+                    <a href="#login" class="btn-line px-3 py-1.5 text-[10px] uppercase tracking-wider">
+                        Log In
+                    </a>
+                    <a href="#signup" class="btn-brand px-3 py-1.5 text-[10px] uppercase tracking-wider">
+                        Sign Up
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- ==========================================
+             HERO PANEL (Bold marketing content introduction space)
+             ========================================== -->
+        <section class="hero-section border-b border-gray-800 py-16 md:py-24">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left block layout description values -->
+                    <div class="md:col-span-7 space-y-6">
+                        <div class="badge-tag">
+                            <span class="flex h-1.5 w-1.5 bg-green-500 rounded-full mr-2"></span>
+                            ACTIVE SURVEY SYSTEM
+                        </div>
+                        
+                        <h1 class="hero-title tracking-tight leading-none text-white">
+                            The Intelligent <br>
+                            <span class="title-accent">Validation</span> & <br>
+                            Survey Canvas.
+                        </h1>
+
+                        <p class="hero-desc text-lightgray">
+                            Audit question bias natively before publishing. Eliminate responses fraud from spammers or automated bot frameworks, collect frictionless feedback, and access clean analytics without heavy setup.
+                        </p>
+
+                        <div class="flex flex-wrap gap-3">
+                            <a href="#pipeline-auditor" class="btn-brand px-6 py-3 text-[11px] uppercase tracking-wider">
+                                Explore Pipeline Flows <i class="fa-solid fa-arrow-down ml-1"></i>
+                            </a>
+                            <a href="#pipeline-brand" class="btn-line px-6 py-3 text-[11px] uppercase tracking-wider">
+                                View Custom Branding
+                            </a>
+                        </div>
+                    </div>
+
+                   
+                    <div class="md:col-span-5">
+                        <div class="card-brutalist p-6 md:p-8 space-y-4">
+                            <div class="flex justify-between items-center pb-3 border-b border-gray-700">
+                                <div class="dot-group">
+                                    <span class="dot dot-r"></span>
+                                    <span class="dot dot-y"></span>
+                                    <span class="dot dot-g"></span>
+                                </div>
+                                <span class="text-[10px] font-mono text-gray-400">voxintel-panel.cfg</span>
+                            </div>
+
+                            <span class="text-[9px] font-bold text-orange-500 tracking-wider uppercase block">Core Integration Model</span>
+                            <h2 class="text-sm font-bold text-white leading-relaxed">
+                                Our simplified platform bridges the gap between raw web forms and secure validation pipelines, checking every single response dynamically.
+                            </h2>
+
+                            <div class="pt-3 border-t border-gray-700 flex justify-between items-center text-[10px] text-gray-400">
+                                <span><i class="fa-solid fa-shield-halved text-green-500 mr-1"></i> Shield Verified</span>
+                                <span>Core ID: <code class="text-orange-400">active_engine</code></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    
+        <section class="pipeline-section py-16">
+            <div class="container mx-auto px-4 max-w-3xl">
+                
+                <div class="section-header text-center mb-12">
+                    <span class="text-orange-500 text-xs tracking-wider font-bold uppercase block">Simplified Architecture</span>
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-white mt-1">VoxIntel Validation Pipelines</h2>
+                    <p class="text-xs text-gray-400 max-w-md mx-auto mt-2">A clean and lightweight explanation of our four distinct platform workflows.</p>
+                </div>
+
+                <div class="pipeline-flow">
+                    
+                    <!-- Feature Point 1: AI Survey Auditor -->
+                    <div class="pipeline-step" id="pipeline-auditor" style="scroll-margin-top: 100px;">
+                        <div class="timeline-node">1</div>
+                        <div class="timeline-line"></div>
+                        
+                        <div class="card-brutalist p-6 md:p-8">
+                            <div class="space-y-3">
+                                <div class="badge-tag">Pre-Collection Pipeline</div>
+                                <h3 class="text-lg font-bold text-white">AI Survey Quality Auditor</h3>
+                                <p class="text-xs text-gray-300 leading-relaxed">
+                                    Before launching a survey, the system scans draft questions for design bias and leading wording. It calculates bias parameters and automatically rewrites the text to keep your dataset 100% objective.
+                                </p>
+                                <ul class="text-[11px] text-gray-400 space-y-1 pt-2">
+                                    <li><i class="fa-solid fa-circle-check text-orange-500 mr-2"></i> Automatically calculates bias levels prior to sharing links.</li>
+                                    <li><i class="fa-solid fa-circle-check text-orange-500 mr-2"></i> Suggests neutral alternative text options instantly.</li>
+                                    <li><i class="fa-solid fa-circle-check text-orange-500 mr-2"></i> Increases respondent conversion rates with clean layouts.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature Point 2: Response Trust Engine -->
+                    <div class="pipeline-step" id="pipeline-trust" style="scroll-margin-top: 100px;">
+                        <div class="timeline-line"></div>
+                        <div class="timeline-node">2</div>
+                        <div class="timeline-line"></div>
+                        
+                        <div class="card-brutalist p-6 md:p-8">
+                            <div class="space-y-3">
+                                <div class="badge-tag">Submission Shield</div>
+                                <h3 class="text-lg font-bold text-white">Response Trust & Fraud Engine</h3>
+                                <p class="text-xs text-gray-300 leading-relaxed">
+                                    Our background screening layer registers device footprints and tracks response velocity to filter automated bots, scripts, and rapid human clickers (straight-lining) during submission.
+                                </p>
+                                <ul class="text-[11px] text-gray-400 space-y-1 pt-2">
+                                    <li><i class="fa-solid fa-circle-check text-orange-500 mr-2"></i> Tracks silent browser telemetry without user cookies.</li>
+                                    <li><i class="fa-solid fa-circle-check text-orange-500 mr-2"></i> Logs speed checks to flag scripted automation tools.</li>
+                                    <li><i class="fa-solid fa-circle-check text-orange-500 mr-2"></i> Protects public submission links from bot spamming.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature Point 3: Feedback-to-Decision Intelligence -->
+                    <div class="pipeline-step" id="pipeline-sentiment" style="scroll-margin-top: 100px;">
+                        <div class="timeline-line"></div>
+                        <div class="timeline-node">3</div>
+                        <div class="timeline-line"></div>
+                        
+                        <div class="card-brutalist p-6 md:p-8">
+                            <div class="space-y-3">
+                                <div class="badge-tag">Post-Collection Logic</div>
+                                <h3 class="text-lg font-bold text-white">Feedback-to-Decision Intelligence</h3>
+                                <p class="text-xs text-gray-300 leading-relaxed">
+                                    Processes unstructured feedback through natural language models to evaluate sentiment score ranges, group keywords, and display real-time graphical trend analytics on your panel.
+                                </p>
+                                <ul class="text-[11px] text-gray-400 space-y-1 pt-2">
+                                    <li><i class="fa-solid fa-circle-check text-orange-500 mr-2"></i> Automatically categorizes emotions in qualitative feedback.</li>
+                                    <li><i class="fa-solid fa-circle-check text-orange-500 mr-2"></i> Maps keywords to clear business insight markers.</li>
+                                    <li><i class="fa-solid fa-circle-check text-orange-500 mr-2"></i> Updates live visual dashboard metrics instantaneously.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature Point 4: Custom Branding Canvas (Static info) -->
+                    <div class="pipeline-step" id="pipeline-brand" style="scroll-margin-top: 100px;">
+                        <div class="timeline-line"></div>
+                        <div class="timeline-node">4</div>
+                        <div class="timeline-line"></div>
+                        
+                        <div class="card-brutalist p-6 md:p-8">
+                            <div class="space-y-3">
+                                <div class="badge-tag">Survey Presentation</div>
+                                <h3 class="text-lg font-bold text-white">Custom Themes & Brand Core</h3>
+                                <p class="text-xs text-gray-300 leading-relaxed">
+                                    Design beautiful, high-converting survey links matching your corporate identity. Customize logos, typography layouts, and colors globally to provide respondents with premium styling.
+                                </p>
+                                <ul class="text-[11px] text-gray-400 space-y-1 pt-2">
+                                    <li><i class="fa-solid fa-circle-check text-orange-500 mr-2"></i> Configures responsive custom styles for any screen size.</li>
+                                    <li><i class="fa-solid fa-circle-check text-orange-500 mr-2"></i> Implements clean brand alignments for company profiles.</li>
+                                    <li><i class="fa-solid fa-circle-check text-orange-500 mr-2"></i> Keeps consistent design interfaces for anonymous intakes.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SITE FOOTER (Bottom metadata and details)
+             ========================================== -->
+        <footer class="site-footer border-t border-gray-800 py-10 bg-black">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    
+                    <div class="space-y-2">
+                        <span class="text-md font-extrabold text-white">VOXINTEL</span>
+                        <p class="text-xs text-gray-400 max-w-sm leading-relaxed">
+                            MERN Stack survey engines mapping secure validation pipelines and automated data protection structures natively.
+                        </p>
+                    </div>
+
+                    <div class="md:text-end">
+                        <div class="status-badge">
+                            <span class="status-dot"></span>
+                            PLATFORM ENGINE CORE: ACTIVE
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="footer-bottom border-t border-gray-800 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center text-[10px] text-gray-500 gap-4">
+                    <span>© 2026 VoxIntel Inc. Designed with semantic HTML structures and Tailwind CSS utilities.</span>
+                    <div class="footer-links flex space-x-4">
+                        <a href="#pipeline-auditor" class="hover:text-orange-500">Specs</a>
+                        <a href="#pipeline-trust" class="hover:text-orange-500">Security</a>
+                        <a href="#pipeline-brand" class="hover:text-orange-500">Branding</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>
