@@ -11,82 +11,93 @@
 </head>
 <body class="antialiased">
 
-   
-    <div class="app-wrapper min-h-screen flex flex-col justify-between">
+    <!-- poora app ka wrapper div — min full screen height aur flex column layout -->
+    <div class="wrapper min-h-screen flex flex-col justify-between">
 
-       
-        <header class="site-header border-b border-gray-800 py-3 sticky top-0 bg-black z-50">
+        <!-- sticky top navbar — dark border ke saath fixed rehta hai scroll pe -->
+        <header class="topbar border-b border-gray-800 py-3 sticky top-0 bg-black z-50">
             <div class="container mx-auto px-4 flex justify-between items-center">
-                
-                <!-- Geometric brand logo jo hover pe text expand karega -->
-                <div class="brand-logo" title="Hover for identity">
+
+                <!-- brand logo — hover pe text smoothly reveal hota hai -->
+                <div class="logo" title="Hover for identity">
                     <svg class="w-6 h-6 stroke-orange-500 flex-shrink-0 fill-none" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke-dasharray="2 1"></rect>
                         <path d="M9 17c2-3 4-3 6 0" stroke="orange" stroke-width="3"></path>
                     </svg>
-                    <span class="logo-text-reveal">VOX INTERACTION INTELLIGENCE</span>
+                    <!-- yeh span hover pe slide-in hota hai — CSS transition se -->
+                    <span class="logo-text">VOX INTELLIGENCE</span>
                 </div>
 
-              
+                <!-- desktop navigation links — mobile pe hidden rahenge -->
                 <nav class="hidden md:flex space-x-6 items-center font-bold text-[11px]">
-                    <a href="#pipeline-auditor" class="nav-link">01. AI Auditor</a>
-                    <a href="#pipeline-trust" class="nav-link">02. Integrity Shield</a>
-                    <a href="#pipeline-sentiment" class="nav-link">03. Sentiment Engine</a>
-                    <a href="#pipeline-brand" class="nav-link">04. Brand Core</a>
+                    <a href="#auditor" class="navlink">01. AI Auditor</a>
+                    <a href="#trust" class="navlink">02. Integrity Shield</a>
+                    <a href="#sentiment" class="navlink">03. Sentiment Engine</a>
+                    <a href="#brand" class="navlink">04. Brand Core</a>
                 </nav>
 
-                
+                <!-- auth buttons — login outline, signup filled orange -->
                 <div class="flex items-center space-x-2">
-                    <a href="#login" class="btn-line px-3 py-1.5 text-[10px] uppercase tracking-wider">
+                    <a href="#login" class="btn-outline px-3 py-1.5 text-[10px] uppercase tracking-wider">
                         Log In
                     </a>
-                    <a href="#signup" class="btn-brand px-3 py-1.5 text-[10px] uppercase tracking-wider">
+                    <a href="#signup" class="btn-fill px-3 py-1.5 text-[10px] uppercase tracking-wider">
                         Sign Up
                     </a>
                 </div>
             </div>
         </header>
 
-        
-        <section class="hero-section border-b border-gray-800 py-16 md:py-24">
+        <!-- hero section — main landing area with headline aur info card -->
+        <section class="hero border-b border-gray-800 py-16 md:py-24">
             <div class="container mx-auto px-4">
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
-                    
-                    
+
+                    <!-- left side — headline, description aur CTA buttons -->
                     <div class="md:col-span-7 space-y-6">
-                        <div class="badge-tag">
+
+                        <!-- small pill badge — "active system" indicator -->
+                        <div class="pill">
                             <span class="flex h-1.5 w-1.5 bg-green-500 rounded-full mr-2"></span>
                             ACTIVE SURVEY SYSTEM
                         </div>
-                        
-                        <h1 class="hero-title tracking-tight leading-none text-white">
+
+                        <!-- main hero heading — bada bold title -->
+                        <h1 class="headline tracking-tight leading-none text-white">
                             The Intelligent <br>
-                            <span class="title-accent">Validation</span> & <br>
+                            <!-- orange accent word -->
+                            <span class="accent-word">Validation</span> & <br>
                             Survey Canvas.
                         </h1>
 
-                        <p class="hero-desc text-lightgray">
+                        <!-- hero description text -->
+                        <p class="subtext text-lightgray">
                             Audit question bias natively before publishing. Eliminate responses fraud from spammers or automated bot frameworks, collect frictionless feedback, and access clean analytics without heavy setup.
                         </p>
 
+                        <!-- two CTA buttons — primary filled aur secondary outline -->
                         <div class="flex flex-wrap gap-3">
-                            <a href="#pipeline-auditor" class="btn-brand px-6 py-3 text-[11px] uppercase tracking-wider">
+                            <a href="#auditor" class="btn-fill px-6 py-3 text-[11px] uppercase tracking-wider">
                                 Explore Pipeline Flows <i class="fa-solid fa-arrow-down ml-1"></i>
                             </a>
-                            <a href="#pipeline-brand" class="btn-line px-6 py-3 text-[11px] uppercase tracking-wider">
+                            <a href="#brand" class="btn-outline px-6 py-3 text-[11px] uppercase tracking-wider">
                                 View Custom Branding
                             </a>
                         </div>
                     </div>
 
-                    
+                    <!-- right side — info card with brutalist shadow styling -->
                     <div class="md:col-span-5">
-                        <div class="card-brutalist p-6 md:p-8 space-y-4">
+                        <!-- card component — orange shadow wala box -->
+                        <div class="card p-6 md:p-8 space-y-4">
+
+                            <!-- fake macOS style dots + filename label -->
                             <div class="flex justify-between items-center pb-3 border-b border-gray-700">
-                                <div class="dot-group">
-                                    <span class="dot dot-r"></span>
-                                    <span class="dot dot-y"></span>
-                                    <span class="dot dot-g"></span>
+                                <div class="dots">
+                                    <!-- teen colored dots — macOS window style -->
+                                    <span class="dot dot-red"></span>
+                                    <span class="dot dot-yellow"></span>
+                                    <span class="dot dot-green"></span>
                                 </div>
                                 <span class="text-[10px] font-mono text-gray-400">voxintel-panel.cfg</span>
                             </div>
@@ -96,6 +107,7 @@
                                 Our simplified platform bridges the gap between raw web forms and secure validation pipelines, checking every single response dynamically.
                             </h2>
 
+                            <!-- card footer row — verified badge + core id -->
                             <div class="pt-3 border-t border-gray-700 flex justify-between items-center text-[10px] text-gray-400">
                                 <span><i class="fa-solid fa-shield-halved text-green-500 mr-1"></i> Shield Verified</span>
                                 <span>Core ID: <code class="text-orange-400">active_engine</code></span>
@@ -107,26 +119,30 @@
             </div>
         </section>
 
-       
-        <section class="pipeline-section py-16">
+        <!-- pipeline section — 4 steps vertical flow layout -->
+        <section class="pipelines py-16">
             <div class="container mx-auto px-4 max-w-3xl">
-                
-                <div class="section-header text-center mb-12">
+
+                <!-- section heading area -->
+                <div class="sec-head text-center mb-12">
                     <span class="text-orange-500 text-xs tracking-wider font-bold uppercase block">Simplified Architecture</span>
                     <h2 class="text-2xl md:text-3xl font-extrabold text-white mt-1">VoxIntel Validation Pipelines</h2>
                     <p class="text-xs text-gray-400 max-w-md mx-auto mt-2">A clean and lightweight explanation of our four distinct platform workflows.</p>
                 </div>
 
-                <div class="pipeline-flow">
-                    
-                    
-                    <div class="pipeline-step" id="pipeline-auditor" style="scroll-margin-top: 100px;">
-                        <div class="timeline-node">1</div>
-                        <div class="timeline-line"></div>
-                        
-                        <div class="card-brutalist p-6 md:p-8">
+                <!-- vertical dotted flow container -->
+                <div class="flow">
+
+                    <!-- step 1 — AI auditor pipeline -->
+                    <div class="step" id="auditor" style="scroll-margin-top: 100px;">
+                        <!-- numbered circle node -->
+                        <div class="node">1</div>
+                        <!-- dotted connector line neeche -->
+                        <div class="connector"></div>
+
+                        <div class="card p-6 md:p-8">
                             <div class="space-y-3">
-                                <div class="badge-tag">Pre-Collection Pipeline</div>
+                                <div class="pill">Pre-Collection Pipeline</div>
                                 <h3 class="text-lg font-bold text-white">AI Survey Quality Auditor</h3>
                                 <p class="text-xs text-gray-300 leading-relaxed">
                                     Before launching a survey, the system scans draft questions for design bias and leading wording. It calculates bias parameters and automatically rewrites the text to keep your dataset 100% objective.
@@ -140,15 +156,15 @@
                         </div>
                     </div>
 
-                   
-                    <div class="pipeline-step" id="pipeline-trust" style="scroll-margin-top: 100px;">
-                        <div class="timeline-line"></div>
-                        <div class="timeline-node">2</div>
-                        <div class="timeline-line"></div>
-                        
-                        <div class="card-brutalist p-6 md:p-8">
+                    <!-- step 2 — fraud/trust engine -->
+                    <div class="step" id="trust" style="scroll-margin-top: 100px;">
+                        <div class="connector"></div>
+                        <div class="node">2</div>
+                        <div class="connector"></div>
+
+                        <div class="card p-6 md:p-8">
                             <div class="space-y-3">
-                                <div class="badge-tag">Submission Shield</div>
+                                <div class="pill">Submission Shield</div>
                                 <h3 class="text-lg font-bold text-white">Response Trust & Fraud Engine</h3>
                                 <p class="text-xs text-gray-300 leading-relaxed">
                                     Our background screening layer registers device footprints and tracks response velocity to filter automated bots, scripts, and rapid human clickers (straight-lining) during submission.
@@ -162,15 +178,15 @@
                         </div>
                     </div>
 
-                    
-                    <div class="pipeline-step" id="pipeline-sentiment" style="scroll-margin-top: 100px;">
-                        <div class="timeline-line"></div>
-                        <div class="timeline-node">3</div>
-                        <div class="timeline-line"></div>
-                        
-                        <div class="card-brutalist p-6 md:p-8">
+                    <!-- step 3 — sentiment analysis engine -->
+                    <div class="step" id="sentiment" style="scroll-margin-top: 100px;">
+                        <div class="connector"></div>
+                        <div class="node">3</div>
+                        <div class="connector"></div>
+
+                        <div class="card p-6 md:p-8">
                             <div class="space-y-3">
-                                <div class="badge-tag">Post-Collection Logic</div>
+                                <div class="pill">Post-Collection Logic</div>
                                 <h3 class="text-lg font-bold text-white">Feedback-to-Decision Intelligence</h3>
                                 <p class="text-xs text-gray-300 leading-relaxed">
                                     Processes unstructured feedback through natural language models to evaluate sentiment score ranges, group keywords, and display real-time graphical trend analytics on your panel.
@@ -184,15 +200,15 @@
                         </div>
                     </div>
 
-                    
-                    <div class="pipeline-step" id="pipeline-brand" style="scroll-margin-top: 100px;">
-                        <div class="timeline-line"></div>
-                        <div class="timeline-node">4</div>
-                        <div class="timeline-line"></div>
-                        
-                        <div class="card-brutalist p-6 md:p-8">
+                    <!-- step 4 — brand/theme customizer -->
+                    <div class="step" id="brand" style="scroll-margin-top: 100px;">
+                        <div class="connector"></div>
+                        <div class="node">4</div>
+                        <div class="connector"></div>
+
+                        <div class="card p-6 md:p-8">
                             <div class="space-y-3">
-                                <div class="badge-tag">Survey Presentation</div>
+                                <div class="pill">Survey Presentation</div>
                                 <h3 class="text-lg font-bold text-white">Custom Themes & Brand Core</h3>
                                 <p class="text-xs text-gray-300 leading-relaxed">
                                     Design beautiful, high-converting survey links matching your corporate identity. Customize logos, typography layouts, and colors globally to provide respondents with premium styling.
@@ -207,15 +223,15 @@
                     </div>
 
                 </div>
-
             </div>
         </section>
 
-        
-        <footer class="site-footer border-t border-gray-800 py-10 bg-black">
+        <!-- site footer — black background, status badge aur links -->
+        <footer class="footer border-t border-gray-800 py-10 bg-black">
             <div class="container mx-auto px-4">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                    
+
+                    <!-- footer left — brand name aur short description -->
                     <div class="space-y-2">
                         <span class="text-md font-extrabold text-white">VOXINTEL</span>
                         <p class="text-xs text-gray-400 max-w-sm leading-relaxed">
@@ -223,7 +239,9 @@
                         </p>
                     </div>
 
+                    <!-- footer right — live status indicator badge -->
                     <div class="md:text-end">
+                        <!-- pulsing green dot wala status badge -->
                         <div class="status-badge">
                             <span class="status-dot"></span>
                             PLATFORM ENGINE CORE: ACTIVE
@@ -232,12 +250,14 @@
 
                 </div>
 
+                <!-- footer bottom row — copyright aur quick links -->
                 <div class="footer-bottom border-t border-gray-800 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center text-[10px] text-gray-500 gap-4">
                     <span>© 2026 VoxIntel Inc. Designed with semantic HTML structures and Tailwind CSS utilities.</span>
+                    <!-- quick anchor links to sections -->
                     <div class="footer-links flex space-x-4">
-                        <a href="#pipeline-auditor" class="hover:text-orange-500">Specs</a>
-                        <a href="#pipeline-trust" class="hover:text-orange-500">Security</a>
-                        <a href="#pipeline-brand" class="hover:text-orange-500">Branding</a>
+                        <a href="#auditor" class="hover:text-orange-500">Specs</a>
+                        <a href="#trust" class="hover:text-orange-500">Security</a>
+                        <a href="#brand" class="hover:text-orange-500">Branding</a>
                     </div>
                 </div>
             </div>
