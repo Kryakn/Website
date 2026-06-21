@@ -1,6 +1,6 @@
-/* =============================================
-   css variables — poore project ki theming yahan se control hoti hai
-   ============================================= */
+/* 
+poore project ki theming yahan se control hoti hai
+*/
 :root {
     --bg-main: black;
     --bg-card: rgb(70, 59, 39);
@@ -118,7 +118,7 @@ body {
     border: 1px solid var(--border-color);
 }
 
-/* logo ka text span — default pe hidden, hover pe slide in hota hai */
+/* logo ka text span —  hover pe slide in hota hai */
 .logo-text {
     opacity: 0;
     transform: translateX(-10px); /* thoda left se aata hai */
@@ -134,9 +134,9 @@ body {
     transform: translateX(0); /* original position pe aa jaata hai */
 }
 
-/* =============================================
+/* 
         navlink — header navigation anchors
-   ============================================= */
+ */
 .navlink {
     transition: color var(--transition);
 }
@@ -144,11 +144,11 @@ body {
     color: var(--accent);
 }
 
-/* =============================================
+/* 
       hero headline aur accent word styling
-   ============================================= */
+ */
 
-/* headline — responsive font size, clamp se auto adjust hota hai */
+/* headline — responsive font size */
 .headline {
     font-size: clamp(2rem, 5vw, 4rem);
     font-weight: 900;
@@ -165,9 +165,9 @@ body {
     line-height: 1.6;
 }
 
-/* =============================================
+/* 
            macOS style window dots 
-   ============================================= */
+ */
 .dots {
     display: flex;
     gap: 6px;
@@ -183,9 +183,9 @@ body {
 .dot-yellow { background: #febc2e; } /* minimize button color */
 .dot-green  { background: #28c840; } /* maximize button color */
 
-/* =============================================
+/*
                  pipeline flow 
-   ============================================= */
+ */
 
 /* connector — dotted vertical line jo steps ko connect karti hai */
 .connector {
@@ -197,7 +197,7 @@ body {
     margin: 0 auto;
 }
 
-/* node — numbered circle, glowing orange shadow ke saath */
+/* node — numbered circle*/
 .node {
     width: 32px;
     height: 32px;
@@ -214,9 +214,9 @@ body {
     box-shadow: 0 0 10px var(--shadow-color); /* glow effect */
 }
 
-/* =============================================
+/*
    status badge — footer mein live platform indicator
-   ============================================= */
+ */
 .status-badge {
     display: inline-flex;
     align-items: center;
@@ -230,7 +230,7 @@ body {
     border-radius: 50px;
 }
 
-/* pulsing green dot — platform "live" dikhane ke liye animation */
+/* pulsing green dot — platform "live" dikhane ke liye */
 .status-dot {
     width: 8px;
     height: 8px;
@@ -239,18 +239,19 @@ body {
     animation: pulse 1.5s infinite; /* continuously blink karta hai */
 }
 
-/* pulse animation — opacity toggle karta hai smoothly -->*/
+/* pulse animation — opacity toggle karta hai */
 @keyframes pulse {
     0%, 100% { opacity: 1; }
     50%       { opacity: 0.4; }
 }
 
-/* =============================================
+/* 
    footer-bottom aur footer-links — bottom row styling
-   ============================================= */
+*/
 .footer-bottom {
     /* layout tailwind se handle ho raha hai */
 }
 .footer-links a {
     transition: color var(--transition);
 }
+
