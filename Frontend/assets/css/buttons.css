@@ -1,0 +1,55 @@
+.vx-btn-login {
+
+    border: none;
+
+    background: none;
+
+    font-weight: 600;
+
+    color: var(--text-secondary);
+
+    transition: var(--transition);
+
+}
+
+.vx-btn-login:hover {
+
+    color: var(--primary-color);
+
+}
+
+.vx-btn-primary {
+
+    border: none;
+
+    padding: 12px 24px;
+
+    border-radius: var(--radius-lg);
+
+    background: var(--primary-color);
+
+    color: white;
+
+    font-weight: 600;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: .6rem;
+
+    transition: var(--transition);
+
+    box-shadow: var(--shadow-sm);
+
+}
+
+.vx-btn-primary:hover {
+
+    background: var(--primary-hover);
+
+    transform: translateY(-3px);
+
+    box-shadow: var(--shadow-md);
+
+}

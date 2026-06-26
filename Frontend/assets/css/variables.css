@@ -1,0 +1,65 @@
+/* ==========================================
+   VoxIntel Design Tokens
+   File: variables.css
+   Purpose: Global design variables
+========================================== */
+
+:root {
+
+    /* Brand Colors */
+    --primary-color: #6366F1;
+    --primary-hover: #4F46E5;
+
+    --secondary-color: #06B6D4;
+
+    --accent-color: #10B981;
+
+    --danger-color: #EF4444;
+
+    --warning-color: #F59E0B;
+
+    --success-color: #22C55E;
+
+    /* Backgrounds */
+    --bg-color: #F8FAFC;
+
+    --surface-color: #FFFFFF;
+
+    --dark-bg: #0F172A;
+
+    /* Text */
+    --text-primary: #1E293B;
+
+    --text-secondary: #64748B;
+
+    --text-light: #94A3B8;
+
+    /* Border */
+    --border-color: #E2E8F0;
+
+    /* Typography */
+    --heading-font: "Poppins", sans-serif;
+
+    --body-font: "Inter", sans-serif;
+
+    /* Radius */
+    --radius-sm: 8px;
+
+    --radius-md: 12px;
+
+    --radius-lg: 20px;
+
+    /* Shadows */
+    --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.05);
+
+    --shadow-md: 0 10px 30px rgba(15, 23, 42, 0.08);
+
+    --shadow-lg: 0 20px 50px rgba(15, 23, 42, 0.12);
+
+    /* Transition */
+    --transition: all .3s ease;
+
+    /* Container */
+    --container-width: 1280px;
+
+}
