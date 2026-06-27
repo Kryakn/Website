@@ -1,0 +1,141 @@
+/* ==========================================
+   Navbar Styles
+   File: navbar.css
+========================================== */
+
+/* ---------- Header ---------- */
+
+.header{
+
+    position: sticky;
+
+    top:0;
+
+    width:100%;
+
+    z-index:1000;
+
+    background:rgba(255,255,255,.80);
+
+    backdrop-filter:blur(14px);
+
+    -webkit-backdrop-filter:blur(14px);
+
+    border-bottom:1px solid rgba(226,232,240,.6);
+
+}
+
+/* ---------- Navbar ---------- */
+
+.navbar{
+
+    height:80px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+}
+
+/* ---------- Logo ---------- */
+
+.logo{
+
+    font-family:var(--heading-font);
+
+    font-size:1.8rem;
+
+    font-weight:700;
+
+    color:var(--text-primary);
+
+}
+
+.logo span{
+
+    color:var(--primary-color);
+
+}
+
+/* ---------- Navigation ---------- */
+
+.nav-links{
+
+    display:flex;
+
+    gap:2rem;
+
+    align-items:center;
+
+}
+
+.nav-links a{
+
+    position:relative;
+
+    color:var(--text-secondary);
+
+    font-weight:500;
+
+    transition:var(--transition);
+
+}
+
+.nav-links a:hover{
+
+    color:var(--primary-color);
+
+}
+
+.nav-links a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-6px;
+
+    width:0;
+
+    height:2px;
+
+    background:var(--primary-color);
+
+    transition:var(--transition);
+
+}
+
+.nav-links a:hover::after{
+
+    width:100%;
+
+}
+
+.nav-actions{
+
+    display:flex;
+
+    gap:1rem;
+
+    align-items:center;
+
+}
+
+
+.menu-toggle{
+
+    display:none;
+
+    border:none;
+
+    background:none;
+
+    font-size:1.4rem;
+
+    cursor:pointer;
+
+}
