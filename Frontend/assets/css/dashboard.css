@@ -31,6 +31,22 @@
     gap:22px;
 
 }
+
+/* ==========================================
+   Dashboard Body
+========================================== */
+
+.dashboard-body{
+
+    display:grid;
+
+    grid-template-columns:70px 1fr;
+
+    gap:20px;
+
+    align-items:start;
+
+}
 .dashboard-icon{
 
     font-size:4rem;
