@@ -1,0 +1,203 @@
+/* ==========================================
+   Dashboard Container
+========================================== */
+
+
+.dashboard{
+
+    width:100%;
+
+    max-width:520px;
+
+    background:rgba(255,255,255,.90);
+
+    border-radius:24px;
+
+    padding:28px;
+
+    border:1px solid rgba(226,232,240,.8);
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+    box-shadow:
+        0 20px 60px rgba(15,23,42,.12);
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+
+}
+.dashboard-icon{
+
+    font-size:4rem;
+
+    color:var(--primary-color);
+
+}
+.dashboard-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.dashboard-header h3{
+
+    font-size:1.1rem;
+
+    font-weight:700;
+
+}
+.status-live{
+
+    padding:6px 14px;
+
+    border-radius:999px;
+
+    background:#DCFCE7;
+
+    color:#16A34A;
+
+    font-size:.85rem;
+
+    font-weight:600;
+
+}
+.dashboard-card{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:#F8FAFC;
+
+    transition:var(--transition);
+
+}
+.dashboard-card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:var(--shadow-sm);
+
+}
+.dashboard-card p{
+
+    color:var(--text-secondary);
+
+    font-size:.9rem;
+
+}
+
+.dashboard-card h2{
+
+    margin-top:6px;
+
+    font-size:1.8rem;
+
+    font-weight:700;
+
+}
+.dashboard-card i{
+
+    font-size:2rem;
+
+    color:var(--primary-color);
+
+}
+
+.emoji{
+
+    font-size:2rem;
+
+}
+.progress-title{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:10px;
+
+    font-weight:600;
+
+}
+
+.progress-bar{
+
+    width:100%;
+
+    height:12px;
+
+    background:#E2E8F0;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+}
+.progress-fill{
+
+    width:78%;
+
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        #6366F1,
+        #8B5CF6
+    );
+
+    border-radius:999px;
+
+}
+.ai-insight{
+
+    background:#EEF2FF;
+
+    border-radius:18px;
+
+    padding:20px;
+
+}
+
+.ai-tag{
+
+    display:inline-block;
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    background:white;
+
+    color:var(--primary-color);
+
+    font-size:.85rem;
+
+    font-weight:600;
+
+    margin-bottom:12px;
+
+}
+
+.ai-insight p{
+
+    line-height:1.7;
+
+    color:var(--text-secondary);
+
+}
