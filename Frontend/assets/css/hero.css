@@ -1,0 +1,541 @@
+/* ==========================================
+   Hero Section
+========================================== */
+
+.hero{
+    position: relative;
+    overflow: hidden;
+
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+
+    background: linear-gradient(
+        135deg,
+        #F8FAFC 0%,
+        #EEF2FF 100%
+    );
+}
+
+.hero-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 5rem;
+    position: relative;
+    z-index: 2;
+}
+.hero-content{
+    display:flex;
+    flex-direction:column;
+    gap:2rem;
+}
+
+.hero-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    width:fit-content;
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    background:#EEF2FF;
+
+    color:var(--primary-color);
+
+    font-weight:600;
+
+    font-size:.95rem;
+
+}
+
+.hero-title{
+
+    font-family:var(--heading-font);
+
+    font-size:3.8rem;
+
+    line-height:1.15;
+
+    font-weight:800;
+
+}
+
+.hero-title span{
+
+    color:var(--primary-color);
+
+}
+
+.hero-description{
+
+    font-size:1.15rem;
+
+    color:var(--text-secondary);
+
+    line-height:1.8;
+
+    max-width:600px;
+
+}
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:1rem;
+
+    align-items:center;
+
+}
+.hero-stats{
+
+    display:flex;
+
+    gap:3rem;
+
+    margin-top:1rem;
+
+}
+
+.stat h3{
+
+    color:var(--primary-color);
+
+    font-size:1.6rem;
+
+    font-weight:700;
+
+}
+
+.stat p{
+
+    color:var(--text-secondary);
+
+    margin-top:.4rem;
+
+}
+.hero-image{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ==========================================
+   Dashboard Container
+========================================== */
+
+.dashboard{
+
+    width:100%;
+
+    max-width:520px;
+
+    background:rgba(255,255,255,.90);
+
+    border-radius:24px;
+
+    padding:28px;
+
+    border:1px solid rgba(226,232,240,.8);
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+    box-shadow:
+        0 20px 60px rgba(15,23,42,.12);
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+
+}
+.dashboard-icon{
+
+    font-size:4rem;
+
+    color:var(--primary-color);
+
+}
+.dashboard-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.dashboard-header h3{
+
+    font-size:1.1rem;
+
+    font-weight:700;
+
+}
+.status-live{
+
+    padding:6px 14px;
+
+    border-radius:999px;
+
+    background:#DCFCE7;
+
+    color:#16A34A;
+
+    font-size:.85rem;
+
+    font-weight:600;
+
+}
+.dashboard-card{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:#F8FAFC;
+
+    transition:var(--transition);
+
+}
+.dashboard-card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:var(--shadow-sm);
+
+}
+.dashboard-card p{
+
+    color:var(--text-secondary);
+
+    font-size:.9rem;
+
+}
+
+.dashboard-card h2{
+
+    margin-top:6px;
+
+    font-size:1.8rem;
+
+    font-weight:700;
+
+}
+.dashboard-card i{
+
+    font-size:2rem;
+
+    color:var(--primary-color);
+
+}
+
+.emoji{
+
+    font-size:2rem;
+
+}
+.progress-title{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:10px;
+
+    font-weight:600;
+
+}
+
+.progress-bar{
+
+    width:100%;
+
+    height:12px;
+
+    background:#E2E8F0;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+}
+.progress-fill{
+
+    width:78%;
+
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        #6366F1,
+        #8B5CF6
+    );
+
+    border-radius:999px;
+
+}
+.ai-insight{
+
+    background:#EEF2FF;
+
+    border-radius:18px;
+
+    padding:20px;
+
+}
+
+.ai-tag{
+
+    display:inline-block;
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    background:white;
+
+    color:var(--primary-color);
+
+    font-size:.85rem;
+
+    font-weight:600;
+
+    margin-bottom:12px;
+
+}
+
+.ai-insight p{
+
+    line-height:1.7;
+
+    color:var(--text-secondary);
+
+}
+/* ==========================================
+   Floating Cards
+========================================== */
+
+.floating-card{
+
+    position:absolute;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    background:rgba(255,255,255,.9);
+
+    backdrop-filter:blur(14px);
+
+    -webkit-backdrop-filter:blur(14px);
+
+    padding:14px 18px;
+
+    border-radius:18px;
+
+    box-shadow:0 15px 40px rgba(15,23,42,.12);
+
+    border:1px solid rgba(255,255,255,.6);
+
+    animation:float 5s ease-in-out infinite;
+
+}
+
+.floating-card i{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#EEF2FF;
+
+    color:var(--primary-color);
+
+}
+
+.floating-card h5{
+
+    margin:0;
+
+    font-size:.95rem;
+
+    font-weight:700;
+
+}
+
+.floating-card p{
+
+    margin:0;
+
+    color:var(--text-secondary);
+
+    font-size:.85rem;
+
+}
+
+/* Position of each cards*/
+.floating-card-1{
+
+    top:40px;
+
+    left:-70px;
+
+}
+
+.floating-card-2{
+
+    bottom:90px;
+
+    left:-90px;
+
+    animation-delay:1s;
+
+}
+
+.floating-card-3{
+
+    top:110px;
+
+    right:-70px;
+
+    animation-delay:2s;
+
+}
+
+@keyframes float{
+
+    0%{
+
+        transform:translateY(0px);
+
+    }
+
+    50%{
+
+        transform:translateY(-12px);
+
+    }
+
+    100%{
+
+        transform:translateY(0px);
+
+    }
+
+}
+/* ==========================================
+   Aurora Background
+========================================== */
+
+.aurora{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    filter:blur(120px);
+
+    opacity:.45;
+
+    z-index:0;
+
+}
+.aurora-1{
+
+    width:420px;
+    height:420px;
+
+    background:#6366F1;
+
+    top:-120px;
+    left:-120px;
+
+}
+
+.aurora-2{
+
+    width:350px;
+    height:350px;
+
+    background:#8B5CF6;
+
+    bottom:-120px;
+    right:-80px;
+
+}
+
+.aurora-3{
+
+    width:280px;
+    height:280px;
+
+    background:#60A5FA;
+
+    top:40%;
+    left:45%;
+
+}
+.aurora-1{
+
+    animation:auroraFloat 18s ease-in-out infinite;
+}
+
+.aurora-2{
+
+    animation:auroraFloat 22s ease-in-out infinite reverse;
+}
+
+.aurora-3{
+
+    animation:auroraFloat 20s ease-in-out infinite;
+}
+
+
+@keyframes auroraFloat{
+
+    0%{
+
+        transform:translate(0,0) scale(1);
+
+    }
+
+    50%{
+
+        transform:translate(30px,-25px) scale(1.08);
+
+    }
+
+    100%{
+
+        transform:translate(0,0) scale(1);
+
+    }
+
+}
