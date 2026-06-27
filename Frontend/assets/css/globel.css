@@ -1,0 +1,100 @@
+/* ==========================================
+   Global Styles
+   File: global.css
+========================================== */
+
+/* ---------- Reset ---------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ---------- Smooth Scroll ---------- */
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ---------- Body ---------- */
+
+body {
+
+    font-family: var(--body-font);
+
+    background: var(--bg-color);
+
+    color: var(--text-primary);
+
+    overflow-x: hidden;
+
+    line-height: 1.6;
+}
+
+/* ---------- Images ---------- */
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* ---------- Links ---------- */
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ---------- Lists ---------- */
+
+ul {
+    list-style: none;
+}
+
+/* ---------- Headings ---------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+
+    font-family: var(--heading-font);
+
+    font-weight: 700;
+
+    color: var(--text-primary);
+
+}
+
+/* ---------- Section Spacing ---------- */
+
+section {
+    padding: 100px 0;
+}
+
+/* ---------- Container ---------- */
+
+.custom-container {
+
+    width: min(92%, var(--container-width));
+
+    margin: auto;
+
+}
+
+/* ---------- Utility ---------- */
+
+.shadow-custom {
+    box-shadow: var(--shadow-md);
+}
+
+.rounded-custom {
+    border-radius: var(--radius-lg);
+}
+
+.transition {
+    transition: var(--transition);
+}
