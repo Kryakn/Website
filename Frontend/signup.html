@@ -23,7 +23,7 @@
 </head>
 
 <body>
-    <div class="auth-page">
+    <div class="auth-page signup-page">
 
         <div class="auth-container">
 
@@ -54,10 +54,11 @@
                 <p>
 
                     Join thousands of teams using AI
-                    to understand customer sentiment
+                    to understand customer sentiment and make smarter business decisions.
 
-
+                </p>
                 <div class="dashboard-preview">
+
 
                     <div class="preview-card">
 
@@ -112,6 +113,14 @@
                     </div>
 
                 </div>
+
+
+                <div class="feature-list">
+                    <div class="feature">⚡ AI Powered Analytics</div>
+                    <div class="feature">🔒 Enterprise Security</div>
+                    <div class="feature">👥 Team Collaboration</div>
+                    <div class="feature">😐 Senitment Analysis </div>
+                </div>
             </div>
 
             <!-- Right Side -->
@@ -149,11 +158,23 @@
 
                             </label>
 
-                            <input type="email" id="email" placeholder="Enter your email">
+                            <input type="email" id="email" placeholder="Enter your email" required autocomplete="email">
 
                         </div>
 
                         <!-- Password -->
+
+                        <div class="form-group">
+                            <label for="password">Password</label>
+
+                            <div class="password-wrapper">
+                                <input type="password" id="password" placeholder="Enter your password">
+
+                                <button type="button" class="toggle-password" aria-label="Show Password">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
 
                         <div class="form-group">
 
@@ -165,7 +186,8 @@
 
                             <div class="password-wrapper">
 
-                                <input type="password" id="confirm-password" placeholder="Confirm your password">
+                                <input type="password" id="confirm-password" placeholder="Confirm your password"
+                                    required autocomplete="Password">
 
                                 <button type="button" class="toggle-password">
 
