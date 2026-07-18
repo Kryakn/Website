@@ -48,3 +48,279 @@
         text-align: center;
     }
 }
+/* ==========================================
+   Hero: Laptop and Small Desktop
+========================================== */
+
+@media (max-width: 1100px) {
+
+    .hero-container {
+        gap: 3rem;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .floating-card-1 {
+        left: -20px;
+    }
+
+    .floating-card-2 {
+        left: -30px;
+    }
+
+    .floating-card-3 {
+        right: -20px;
+    }
+}
+/* ==========================================
+   Hero: Tablet
+========================================== */
+
+@media (max-width: 900px) {
+
+    .hero {
+        min-height: auto;
+        padding: 80px 0;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+
+    .hero-content {
+        align-items: center;
+        text-align: center;
+        min-width: 0;
+    }
+
+    .hero-title {
+        max-width: 760px;
+    }
+
+    .hero-description {
+        max-width: 680px;
+    }
+
+    .hero-image {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .dashboard {
+        width: min(100%, 520px);
+    }
+
+    .floating-card {
+        display: none;
+    }
+}
+
+/* ==========================================
+   Hero: Mobile
+========================================== */
+
+@media (max-width: 768px) {
+
+    .hero {
+        padding: 64px 0;
+    }
+
+    .hero-container {
+        gap: 48px;
+    }
+
+    .hero-content {
+        gap: 1.5rem;
+    }
+
+    .hero-badge {
+        padding: 8px 14px;
+        font-size: .82rem;
+    }
+
+    .hero-title {
+        width: 100%;
+        max-width: 100%;
+        font-size: clamp(2.4rem, 7vw, 3rem);
+        line-height: 1.12;
+        overflow-wrap: break-word;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .hero-stats {
+        width: 100%;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .dashboard {
+        max-width: 100%;
+        padding: 20px;
+        gap: 18px;
+    }
+
+    .dashboard-body {
+        grid-template-columns: 56px minmax(0, 1fr);
+        gap: 14px;
+    }
+
+    .sidebar-item {
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+    }
+
+    .dashboard-widgets {
+        gap: 12px;
+    }
+
+    .mini-widget {
+        padding: 14px;
+    }
+
+    .fake-chart {
+        height: 120px;
+    }
+
+    .bar {
+        width: 14px;
+    }
+}
+
+/* ==========================================
+   Hero: Small Mobile
+========================================== */
+
+@media (max-width: 480px) {
+
+    .hero {
+        padding: 52px 0;
+    }
+
+    .hero-content {
+        align-items: stretch;
+        text-align: left;
+    }
+
+    .hero-badge {
+        align-self: flex-start;
+    }
+
+    .hero-title {
+        font-size: 2.35rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero-buttons .vx-btn-primary,
+    .hero-buttons .vx-btn-outline {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .hero-stats {
+        justify-content: space-between;
+        gap: 12px;
+        text-align: center;
+    }
+
+    .stat {
+        flex: 1;
+        min-width: 90px;
+    }
+
+    .stat h3 {
+        font-size: 1.3rem;
+    }
+
+    .stat p {
+        font-size: .82rem;
+    }
+
+    .dashboard {
+        padding: 16px;
+        border-radius: 18px;
+    }
+
+    .dashboard-header {
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .dashboard-header h3 {
+        font-size: 1rem;
+    }
+
+    .status-live {
+        padding: 5px 10px;
+        font-size: .75rem;
+        white-space: nowrap;
+    }
+
+    .dashboard-body {
+        display: block;
+    }
+
+    .dashboard-sidebar {
+        flex-direction: row;
+        justify-content: center;
+        margin-bottom: 16px;
+    }
+
+    .sidebar-item {
+        width: 44px;
+        height: 44px;
+    }
+
+    .analytics-card {
+        padding: 16px;
+    }
+
+    .analytics-top {
+        margin-bottom: 18px;
+    }
+
+    .fake-chart {
+        height: 100px;
+    }
+
+    .bar {
+        width: 11px;
+    }
+
+    .dashboard-widgets {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-card {
+        padding: 14px;
+    }
+
+    .dashboard-card h2 {
+        font-size: 1.5rem;
+    }
+
+    .progress-title {
+        font-size: .85rem;
+    }
+
+    .ai-insight {
+        padding: 16px;
+    }
+}
