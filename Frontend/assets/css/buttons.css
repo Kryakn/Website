@@ -53,3 +53,34 @@
     box-shadow: var(--shadow-md);
 
 }
+.vx-btn-primary {
+    
+    cursor: pointer;
+}
+
+.vx-btn-outline {
+    border: 2px solid var(--primary-color);
+    padding: 12px 24px;
+    border-radius: var(--radius-lg);
+
+    background: transparent;
+    color: var(--primary-color);
+
+    font-weight: 600;
+    cursor: pointer;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .6rem;
+
+    transition: var(--transition);
+}
+
+.vx-btn-outline:hover {
+    background: var(--primary-color);
+    color: white;
+
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
