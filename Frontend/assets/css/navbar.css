@@ -62,6 +62,12 @@
 
 /* ---------- Navigation ---------- */
 
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
 .nav-links{
 
     display:flex;

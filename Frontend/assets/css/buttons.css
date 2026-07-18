@@ -42,6 +42,8 @@
 
     box-shadow: var(--shadow-sm);
 
+    cursor: pointer;
+
 }
 
 .vx-btn-primary:hover {
@@ -52,10 +54,6 @@
 
     box-shadow: var(--shadow-md);
 
-}
-.vx-btn-primary {
-    
-    cursor: pointer;
 }
 
 .vx-btn-outline {
