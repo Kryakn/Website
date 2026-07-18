@@ -1,4 +1,102 @@
+/* ==========================================
+   VoxIntel Responsive Styles
+   File: responsive.css
+========================================== */
+
+
+/* ==========================================
+   1024px — Tablet and Small Laptop
+========================================== */
+
+@media (max-width: 1024px) {
+
+    /* ---------- Hero ---------- */
+
+    .hero-container {
+        gap: 3rem;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .floating-card {
+        display: none;
+    }
+
+    /* ---------- Trusted Users ---------- */
+
+    .trusted-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* ---------- Features ---------- */
+
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* ---------- How It Works ---------- */
+
+    .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* ---------- AI Section ---------- */
+
+    .ai-container {
+        gap: 40px;
+    }
+
+    .ai-content h2 {
+        font-size: 2.5rem;
+    }
+
+    /* ---------- Pricing ---------- */
+
+    .pricing-grid {
+        gap: 18px;
+    }
+
+    .pricing-card {
+        padding: 28px;
+    }
+
+    /* ---------- Footer ---------- */
+
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* ---------- Authentication ---------- */
+
+    .auth-container {
+        grid-template-columns: 42% 58%;
+    }
+
+    .auth-left {
+        padding: 36px 32px;
+    }
+
+    .auth-right {
+        padding: 40px 32px;
+    }
+
+    .auth-left h1 {
+        font-size: 1.8rem;
+    }
+}
+
+
+/* ==========================================
+   768px — Tablet
+========================================== */
+
 @media (max-width: 768px) {
+
+    /* ======================================
+       Navbar
+    ====================================== */
 
     .menu-toggle {
         display: block;
@@ -18,6 +116,7 @@
         gap: 24px;
 
         padding: 24px;
+
         background: var(--surface-color);
         border: 1px solid var(--border-color);
         border-radius: var(--radius-md);
@@ -38,6 +137,7 @@
         flex-direction: column;
         align-items: stretch;
         gap: 12px;
+
         padding-top: 20px;
         border-top: 1px solid var(--border-color);
     }
@@ -47,93 +147,26 @@
         justify-content: center;
         text-align: center;
     }
-}
-/* ==========================================
-   Hero: Laptop and Small Desktop
-========================================== */
 
-@media (max-width: 1100px) {
-
-    .hero-container {
-        gap: 3rem;
-    }
-
-    .hero-title {
-        font-size: 3rem;
-    }
-
-    .floating-card-1 {
-        left: -20px;
-    }
-
-    .floating-card-2 {
-        left: -30px;
-    }
-
-    .floating-card-3 {
-        right: -20px;
-    }
-}
-/* ==========================================
-   Hero: Tablet
-========================================== */
-
-@media (max-width: 900px) {
+    /* ======================================
+       Hero
+    ====================================== */
 
     .hero {
         min-height: auto;
-        padding: 80px 0;
+        padding: 64px 0;
     }
 
     .hero-container {
         grid-template-columns: 1fr;
-        gap: 60px;
+        gap: 48px;
     }
 
     .hero-content {
         align-items: center;
         text-align: center;
-        min-width: 0;
-    }
-
-    .hero-title {
-        max-width: 760px;
-    }
-
-    .hero-description {
-        max-width: 680px;
-    }
-
-    .hero-image {
-        width: 100%;
-        min-width: 0;
-    }
-
-    .dashboard {
-        width: min(100%, 520px);
-    }
-
-    .floating-card {
-        display: none;
-    }
-}
-
-/* ==========================================
-   Hero: Mobile
-========================================== */
-
-@media (max-width: 768px) {
-
-    .hero {
-        padding: 64px 0;
-    }
-
-    .hero-container {
-        gap: 48px;
-    }
-
-    .hero-content {
         gap: 1.5rem;
+        min-width: 0;
     }
 
     .hero-badge {
@@ -144,12 +177,13 @@
     .hero-title {
         width: 100%;
         max-width: 100%;
-        font-size: clamp(2.4rem, 7vw, 3rem);
+        font-size: 2.7rem;
         line-height: 1.12;
         overflow-wrap: break-word;
     }
 
     .hero-description {
+        max-width: 680px;
         font-size: 1rem;
         line-height: 1.7;
     }
@@ -166,8 +200,18 @@
         flex-wrap: wrap;
     }
 
+    .hero-image {
+        width: 100%;
+        min-width: 0;
+    }
+
+    /* ======================================
+       Hero Dashboard Preview
+    ====================================== */
+
     .dashboard {
-        max-width: 100%;
+        width: 100%;
+        max-width: 520px;
         padding: 20px;
         gap: 18px;
     }
@@ -198,16 +242,163 @@
     .bar {
         width: 14px;
     }
+
+    /* ======================================
+       General Sections
+    ====================================== */
+
+    .trusted,
+    .features,
+    .how-it-works,
+    .ai-section,
+    .showcase,
+    .pricing,
+    .cta-section {
+        padding: 72px 0;
+    }
+
+    .section-header {
+        margin-bottom: 42px;
+    }
+
+    .section-header h2 {
+        font-size: 2.35rem;
+    }
+
+    /* ======================================
+       Trusted Users
+    ====================================== */
+
+    .trusted-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* ======================================
+       AI Section
+    ====================================== */
+
+    .ai-container {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+
+    .ai-content {
+        text-align: center;
+    }
+
+    .ai-list {
+        max-width: 420px;
+        margin: auto;
+        text-align: left;
+    }
+
+    /* ======================================
+       Analytics Showcase
+    ====================================== */
+
+    .showcase-card {
+        padding: 26px;
+    }
+
+    .showcase-bottom {
+        grid-template-columns: 1fr;
+    }
+
+    /* ======================================
+       Pricing
+    ====================================== */
+
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 540px;
+        margin: auto;
+    }
+
+    .pricing-card.popular {
+        transform: none;
+    }
+
+    /* ======================================
+       CTA
+    ====================================== */
+
+    .cta-card {
+        padding: 56px 36px;
+    }
+
+    .cta-card h2 {
+        font-size: 2.5rem;
+    }
+
+    /* ======================================
+       Authentication
+    ====================================== */
+
+    .auth-page {
+        align-items: flex-start;
+        padding: 20px;
+    }
+
+    .auth-container,
+    .signup-page .auth-container {
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+
+        grid-template-columns: 1fr;
+
+        border-radius: 24px;
+    }
+
+    .auth-left {
+        display: none;
+    }
+
+    .auth-right {
+        width: 100%;
+        padding: 40px 28px;
+    }
+
+    .auth-card {
+        max-width: 100%;
+    }
 }
 
+
 /* ==========================================
-   Hero: Small Mobile
+   480px — Mobile
 ========================================== */
 
 @media (max-width: 480px) {
 
+    /* ======================================
+       Navbar
+    ====================================== */
+
+    .navbar {
+        height: 72px;
+    }
+
+    .logo {
+        font-size: 1.6rem;
+    }
+
+    .nav-menu {
+        top: 72px;
+        padding: 20px;
+    }
+
+    /* ======================================
+       Hero
+    ====================================== */
+
     .hero {
         padding: 52px 0;
+    }
+
+    .hero-container {
+        gap: 40px;
     }
 
     .hero-content {
@@ -252,6 +443,10 @@
     .stat p {
         font-size: .82rem;
     }
+
+    /* ======================================
+       Hero Dashboard Preview
+    ====================================== */
 
     .dashboard {
         padding: 16px;
@@ -323,122 +518,10 @@
     .ai-insight {
         padding: 16px;
     }
-}
 
-/* ==========================================
-   Remaining Sections: Tablet
-========================================== */
-
-@media (max-width: 1024px) {
-
-    .trusted-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .features-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .steps-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .ai-container {
-        gap: 40px;
-    }
-
-    .ai-content h2 {
-        font-size: 2.5rem;
-    }
-
-    .pricing-grid {
-        gap: 18px;
-    }
-
-    .pricing-card {
-        padding: 28px;
-    }
-
-    .footer-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* ==========================================
-   Remaining Sections: Small Tablet
-========================================== */
-
-@media (max-width: 768px) {
-
-    .trusted,
-    .features,
-    .how-it-works,
-    .ai-section,
-    .showcase,
-    .pricing,
-    .cta-section {
-        padding: 72px 0;
-    }
-
-    .section-header {
-        margin-bottom: 42px;
-    }
-
-    .section-header h2 {
-        font-size: 2.35rem;
-    }
-
-    .trusted-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .ai-container {
-        grid-template-columns: 1fr;
-        gap: 48px;
-    }
-
-    .ai-content {
-        text-align: center;
-    }
-
-    .ai-list {
-        max-width: 420px;
-        margin: auto;
-        text-align: left;
-    }
-
-    .showcase-card {
-        padding: 26px;
-    }
-
-    .showcase-bottom {
-        grid-template-columns: 1fr;
-    }
-
-    .pricing-grid {
-        grid-template-columns: 1fr;
-        max-width: 540px;
-        margin: auto;
-    }
-
-    .pricing-card.popular {
-        transform: none;
-    }
-
-    .cta-card {
-        padding: 56px 36px;
-    }
-
-    .cta-card h2 {
-        font-size: 2.5rem;
-    }
-}
-
-/* ==========================================
-   Remaining Sections: Mobile
-========================================== */
-
-@media (max-width: 480px) {
+    /* ======================================
+       General Sections
+    ====================================== */
 
     .trusted,
     .features,
@@ -467,6 +550,10 @@
         font-size: 1rem;
     }
 
+    /* ======================================
+       Trusted, Features and Steps
+    ====================================== */
+
     .trusted-grid,
     .features-grid,
     .steps-grid {
@@ -478,6 +565,10 @@
     .step-card {
         padding: 24px;
     }
+
+    /* ======================================
+       AI Section
+    ====================================== */
 
     .ai-content {
         text-align: left;
@@ -503,6 +594,10 @@
     .insight-box {
         padding: 16px;
     }
+
+    /* ======================================
+       Analytics Showcase
+    ====================================== */
 
     .showcase-card {
         padding: 18px;
@@ -548,10 +643,18 @@
         padding: 18px;
     }
 
+    /* ======================================
+       Pricing
+    ====================================== */
+
     .pricing-card {
         padding: 24px;
         border-radius: 22px;
     }
+
+    /* ======================================
+       CTA
+    ====================================== */
 
     .cta-card {
         padding: 42px 20px;
@@ -573,6 +676,10 @@
         width: 100%;
     }
 
+    /* ======================================
+       Footer
+    ====================================== */
+
     .footer {
         padding-top: 58px;
     }
@@ -586,5 +693,100 @@
         padding: 20px 16px;
         font-size: .85rem;
     }
+
+    /* ======================================
+       Authentication
+    ====================================== */
+
+    .auth-page {
+        padding: 12px;
+    }
+
+    .auth-container,
+    .signup-page .auth-container {
+        border-radius: 20px;
+    }
+
+    .auth-right {
+        padding: 30px 20px;
+    }
+
+    .auth-card h2 {
+        font-size: 1.65rem;
+    }
+
+    .auth-subtitle {
+        margin-bottom: 24px;
+        font-size: .95rem;
+    }
+
+    .auth-form,
+    .signup-page .auth-form {
+        gap: 16px;
+    }
+
+    .form-group input,
+    .signup-page .form-group input {
+        padding: 13px 16px;
+        font-size: .95rem;
+    }
+
+    .social-login {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .divider {
+        margin: 24px 0;
+    }
+
+    .switch-auth {
+        margin-top: 24px;
+        font-size: .9rem;
+    }
 }
 
+
+/* ==========================================
+   375px — Small Mobile Corrections
+========================================== */
+
+@media (max-width: 375px) {
+
+    .hero-title {
+        font-size: 2.1rem;
+    }
+
+    .hero-badge {
+        font-size: .76rem;
+    }
+
+    .hero-stats {
+        gap: 8px;
+    }
+
+    .stat {
+        min-width: 82px;
+    }
+
+    .dashboard {
+        padding: 14px;
+    }
+
+    .dashboard-sidebar {
+        gap: 10px;
+    }
+
+    .sidebar-item {
+        width: 40px;
+        height: 40px;
+    }
+
+    .auth-page {
+        padding: 8px;
+    }
+
+    .auth-right {
+        padding: 26px 16px;
+    }
+}
