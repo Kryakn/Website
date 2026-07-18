@@ -289,8 +289,7 @@
     font-size: .92rem;
 
 }
-
-.progress-bar {
+.auth-page.progress-bar {
     height: 8px;
     background: rgba(255, 255, 255, .2);
     border-radius: 999px;
@@ -298,24 +297,24 @@
     margin: 12px 0;
 }
 
-.progress-fill {
+.auth-page.progress-fill {
     width: 82%;
     height: 100%;
     background: #FFFFFF;
     border-radius: 999px;
 }
 
-.ai-insight {
+.auth-page.ai-insight {
     background: rgba(255, 255, 255, .15);
     padding: 12px;
     border-radius: 14px;
 }
 
-.ai-insight h4 {
+.auth-page.ai-insight h4 {
     margin-bottom: 10px;
 }
 
-.ai-insight p {
+.auth-page.ai-insight p {
     margin: 0;
     line-height: 1.5;
     font-size: .85rem;
