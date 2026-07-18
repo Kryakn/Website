@@ -324,3 +324,267 @@
         padding: 16px;
     }
 }
+
+/* ==========================================
+   Remaining Sections: Tablet
+========================================== */
+
+@media (max-width: 1024px) {
+
+    .trusted-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ai-container {
+        gap: 40px;
+    }
+
+    .ai-content h2 {
+        font-size: 2.5rem;
+    }
+
+    .pricing-grid {
+        gap: 18px;
+    }
+
+    .pricing-card {
+        padding: 28px;
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ==========================================
+   Remaining Sections: Small Tablet
+========================================== */
+
+@media (max-width: 768px) {
+
+    .trusted,
+    .features,
+    .how-it-works,
+    .ai-section,
+    .showcase,
+    .pricing,
+    .cta-section {
+        padding: 72px 0;
+    }
+
+    .section-header {
+        margin-bottom: 42px;
+    }
+
+    .section-header h2 {
+        font-size: 2.35rem;
+    }
+
+    .trusted-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ai-container {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+
+    .ai-content {
+        text-align: center;
+    }
+
+    .ai-list {
+        max-width: 420px;
+        margin: auto;
+        text-align: left;
+    }
+
+    .showcase-card {
+        padding: 26px;
+    }
+
+    .showcase-bottom {
+        grid-template-columns: 1fr;
+    }
+
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 540px;
+        margin: auto;
+    }
+
+    .pricing-card.popular {
+        transform: none;
+    }
+
+    .cta-card {
+        padding: 56px 36px;
+    }
+
+    .cta-card h2 {
+        font-size: 2.5rem;
+    }
+}
+
+/* ==========================================
+   Remaining Sections: Mobile
+========================================== */
+
+@media (max-width: 480px) {
+
+    .trusted,
+    .features,
+    .how-it-works,
+    .ai-section,
+    .showcase,
+    .pricing,
+    .cta-section {
+        padding: 58px 0;
+    }
+
+    .section-header {
+        margin-bottom: 34px;
+    }
+
+    .section-badge {
+        padding: 8px 14px;
+        font-size: .82rem;
+    }
+
+    .section-header h2 {
+        font-size: 2rem;
+    }
+
+    .section-header p {
+        font-size: 1rem;
+    }
+
+    .trusted-grid,
+    .features-grid,
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .trusted-logo,
+    .feature-card,
+    .step-card {
+        padding: 24px;
+    }
+
+    .ai-content {
+        text-align: left;
+    }
+
+    .ai-content h2 {
+        font-size: 2rem;
+    }
+
+    .ai-list {
+        margin: 0;
+    }
+
+    .ai-card {
+        padding: 22px;
+        border-radius: 22px;
+    }
+
+    .analysis-row {
+        padding: 12px;
+    }
+
+    .insight-box {
+        padding: 16px;
+    }
+
+    .showcase-card {
+        padding: 18px;
+        border-radius: 22px;
+    }
+
+    .showcase-top {
+        align-items: flex-start;
+        gap: 14px;
+    }
+
+    .showcase-top h3 {
+        font-size: 1.2rem;
+    }
+
+    .showcase-status {
+        white-space: nowrap;
+        padding: 6px 10px;
+        font-size: .75rem;
+    }
+
+    .showcase-stats {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .showcase-stat {
+        padding: 16px;
+    }
+
+    .showcase-stat strong {
+        font-size: 1.6rem;
+    }
+
+    .showcase-chart {
+        height: 180px;
+        gap: 10px;
+        padding: 16px;
+    }
+
+    .showcase-insight,
+    .showcase-activity {
+        padding: 18px;
+    }
+
+    .pricing-card {
+        padding: 24px;
+        border-radius: 22px;
+    }
+
+    .cta-card {
+        padding: 42px 20px;
+        border-radius: 24px;
+    }
+
+    .cta-card h2 {
+        font-size: 2rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 32px;
+    }
+
+    .cta-btn-primary,
+    .btn-secondary {
+        width: 100%;
+    }
+
+    .footer {
+        padding-top: 58px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+
+    .footer-bottom {
+        padding: 20px 16px;
+        font-size: .85rem;
+    }
+}
+
