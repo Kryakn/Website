@@ -168,7 +168,7 @@
                             <label for="password">Password</label>
 
                             <div class="password-wrapper">
-                                <input type="password" id="password" placeholder="Enter your password">
+                                <input type="password" id="password" placeholder="Enter your password" required autocomplete="new-password">
 
                                 <button type="button" class="toggle-password" aria-label="Show Password">
                                     <i class="fa-solid fa-eye"></i>
@@ -187,10 +187,13 @@
                             <div class="password-wrapper">
 
                                 <input type="password" id="confirm-password" placeholder="Confirm your password"
-                                    required autocomplete="Password">
+                                    required autocomplete="new-password">
 
-                                <button type="button" class="toggle-password">
-
+                               <button
+    type="button"
+    class="toggle-password"
+    aria-label="Show password"
+>
                                     <i class="fa-solid fa-eye"></i>
 
                                 </button>
@@ -255,6 +258,7 @@
         </div>
 
     </div>
+    <script src="assets/js/auth.js"></script>
 
 </body>
 
