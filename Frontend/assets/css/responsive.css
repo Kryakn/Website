@@ -902,3 +902,57 @@
         justify-content: space-between;
     }
 }
+/* ==========================================
+   Survey Builder
+========================================== */
+
+@media (max-width: 768px) {
+
+    .builder-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .builder-field.full-width {
+        grid-column: auto;
+    }
+
+    .question-section-header {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .add-question-button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .builder-header-link {
+        display: none;
+    }
+
+    .builder-panel {
+        padding: 20px;
+        border-radius: 20px;
+    }
+
+    .builder-panel-header {
+        gap: 12px;
+    }
+
+    .question-card {
+        padding: 18px;
+    }
+
+    .builder-actions {
+        align-items: stretch;
+        flex-direction: column-reverse;
+    }
+
+    .builder-cancel-button,
+    .builder-draft-button,
+    .builder-publish-button {
+        width: 100%;
+    }
+}

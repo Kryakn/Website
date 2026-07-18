@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Create Survey | VoxIntel</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <!-- VoxIntel CSS -->
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/buttons.css">
+    <link rel="stylesheet" href="assets/css/app-layout.css">
+    <link rel="stylesheet" href="assets/css/survey-builder.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+
+<body>
+
+    <div class="app-shell">
+
+        <div class="sidebar-overlay" data-sidebar-close></div>
+
+        <aside class="app-sidebar" id="app-sidebar">
+
+            <div class="sidebar-header">
+
+                <a href="dashboard.html" class="app-logo">
+                    Vox<span>Intel</span>
+                </a>
+
+                <button
+                    type="button"
+                    class="sidebar-close"
+                    data-sidebar-close
+                    aria-label="Close sidebar"
+                >
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+            </div>
+
+            <nav class="sidebar-navigation" aria-label="Application navigation">
+
+                <a href="dashboard.html" class="sidebar-link">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="create-survey.html" class="sidebar-link active">
+                    <i class="fa-solid fa-square-plus"></i>
+                    <span>Create Survey</span>
+                </a>
+
+                <a href="my-surveys.html" class="sidebar-link">
+                    <i class="fa-solid fa-clipboard-list"></i>
+                    <span>My Surveys</span>
+                </a>
+
+                <a href="results.html" class="sidebar-link">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Results</span>
+                </a>
+
+            </nav>
+
+            <div class="sidebar-footer">
+
+                <a href="index.html" class="sidebar-link">
+                    <i class="fa-solid fa-globe"></i>
+                    <span>View Website</span>
+                </a>
+
+                <a href="login.html" class="sidebar-link">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <span>Sign Out</span>
+                </a>
+
+            </div>
+
+        </aside>
+
+        <main class="app-main">
+
+            <header class="app-header">
+
+                <div class="app-header-left">
+
+                    <button
+                        type="button"
+                        class="sidebar-toggle"
+                        aria-label="Open sidebar"
+                        aria-controls="app-sidebar"
+                        aria-expanded="false"
+                    >
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+
+                    <div>
+                        <h1>Create Survey</h1>
+                        <p>Design a new survey for your audience.</p>
+                    </div>
+
+                </div>
+
+                <div class="app-header-actions">
+
+                    <a href="my-surveys.html" class="builder-header-link">
+                        <i class="fa-solid fa-folder-open"></i>
+                        My Surveys
+                    </a>
+
+                    <div class="user-avatar">AS</div>
+
+                </div>
+
+            </header>
+
+            <div class="app-content">
+
+                <form class="survey-builder-form" id="survey-builder-form">
+
+                    <!-- Survey information -->
+                    <section class="builder-panel">
+
+                        <div class="builder-panel-header">
+                            <span class="builder-step">1</span>
+
+                            <div>
+                                <h2>Survey Details</h2>
+                                <p>Give your survey a clear title and purpose.</p>
+                            </div>
+                        </div>
+
+                        <div class="builder-form-grid">
+
+                            <div class="builder-field full-width">
+                                <label for="survey-title">Survey title</label>
+
+                                <input
+                                    type="text"
+                                    id="survey-title"
+                                    placeholder="Example: Student Feedback Survey"
+                                    required
+                                >
+                            </div>
+
+                            <div class="builder-field full-width">
+                                <label for="survey-description">
+                                    Description
+                                </label>
+
+                                <textarea
+                                    id="survey-description"
+                                    rows="4"
+                                    placeholder="Explain what this survey is about"
+                                ></textarea>
+                            </div>
+
+                            <div class="builder-field">
+                                <label for="survey-category">Category</label>
+
+                                <select id="survey-category">
+                                    <option value="feedback">Feedback</option>
+                                    <option value="education">Education</option>
+                                    <option value="research">Research</option>
+                                    <option value="event">Event</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="builder-field">
+                                <label for="survey-status">Initial status</label>
+
+                                <select id="survey-status">
+                                    <option value="draft">Draft</option>
+                                    <option value="active">Active</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                    <!-- Questions -->
+                    <section class="builder-panel">
+
+                        <div class="builder-panel-header question-section-header">
+
+                            <div class="builder-heading-group">
+                                <span class="builder-step">2</span>
+
+                                <div>
+                                    <h2>Questions</h2>
+                                    <p>Add questions for your respondents.</p>
+                                </div>
+                            </div>
+
+                            <button
+                                type="button"
+                                class="add-question-button"
+                                id="add-question-button"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                                Add Question
+                            </button>
+
+                        </div>
+
+                        <div class="questions-container" id="questions-container">
+
+                            <!-- Sample question 1 -->
+                            <article class="question-card">
+
+                                <div class="question-card-header">
+                                    <span>Question 1</span>
+
+                                    <button
+                                        type="button"
+                                        class="remove-question-button"
+                                        aria-label="Remove question 1"
+                                        disabled
+                                    >
+                                        <i class="fa-regular fa-trash-can"></i>
+                                    </button>
+                                </div>
+
+                                <div class="builder-field">
+                                    <label for="question-1">
+                                        Question text
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="question-1"
+                                        placeholder="Enter your question"
+                                    >
+                                </div>
+
+                                <div class="builder-field">
+                                    <label for="question-type-1">
+                                        Question type
+                                    </label>
+
+                                    <select id="question-type-1">
+                                        <option value="short-text">
+                                            Short answer
+                                        </option>
+
+                                        <option value="long-text">
+                                            Long answer
+                                        </option>
+
+                                        <option value="multiple-choice">
+                                            Multiple choice
+                                        </option>
+
+                                        <option value="rating">
+                                            Rating
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <label class="required-question-control">
+                                    <input type="checkbox" checked>
+                                    <span>Required question</span>
+                                </label>
+
+                            </article>
+
+                        </div>
+
+                    </section>
+
+                    <!-- Actions -->
+                    <div class="builder-actions">
+
+                        <a href="dashboard.html" class="builder-cancel-button">
+                            Cancel
+                        </a>
+
+                        <button
+                            type="button"
+                            class="builder-draft-button"
+                        >
+                            Save Draft
+                        </button>
+
+                        <button
+                            type="submit"
+                            class="builder-publish-button"
+                        >
+                            <i class="fa-solid fa-paper-plane"></i>
+                            Publish Survey
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="assets/js/app.js"></script>
+
+</body>
+
+</html>
