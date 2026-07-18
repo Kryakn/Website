@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Dashboard | VoxIntel</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <!-- VoxIntel CSS -->
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/buttons.css">
+    <link rel="stylesheet" href="assets/css/app-layout.css">
+    <link rel="stylesheet" href="assets/css/dashboard-page.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+
+<body>
+
+    <div class="app-shell">
+
+        <!-- Sidebar overlay for mobile -->
+        <div class="sidebar-overlay" data-sidebar-close></div>
+
+        <!-- Sidebar -->
+        <aside class="app-sidebar" id="app-sidebar">
+
+            <div class="sidebar-header">
+
+                <a href="dashboard.html" class="app-logo">
+                    Vox<span>Intel</span>
+                </a>
+
+                <button
+                    type="button"
+                    class="sidebar-close"
+                    data-sidebar-close
+                    aria-label="Close sidebar"
+                >
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+            </div>
+
+            <nav class="sidebar-navigation" aria-label="Dashboard navigation">
+
+                <a href="dashboard.html" class="sidebar-link active">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="create-survey.html" class="sidebar-link">
+                    <i class="fa-solid fa-square-plus"></i>
+                    <span>Create Survey</span>
+                </a>
+
+                <a href="my-surveys.html" class="sidebar-link">
+                    <i class="fa-solid fa-clipboard-list"></i>
+                    <span>My Surveys</span>
+                </a>
+
+                <a href="results.html" class="sidebar-link">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Results</span>
+                </a>
+
+            </nav>
+
+            <div class="sidebar-footer">
+
+                <a href="index.html" class="sidebar-link">
+                    <i class="fa-solid fa-globe"></i>
+                    <span>View Website</span>
+                </a>
+
+                <a href="login.html" class="sidebar-link">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <span>Sign Out</span>
+                </a>
+
+            </div>
+
+        </aside>
+
+        <!-- Main application area -->
+        <main class="app-main">
+
+            <!-- Top header -->
+            <header class="app-header">
+
+                <div class="app-header-left">
+
+                    <button
+                        type="button"
+                        class="sidebar-toggle"
+                        aria-label="Open sidebar"
+                        aria-controls="app-sidebar"
+                        aria-expanded="false"
+                    >
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+
+                    <div>
+                        <h1>Dashboard</h1>
+                        <p>Monitor your surveys and responses.</p>
+                    </div>
+
+                </div>
+
+                <div class="app-header-actions">
+
+                    <button
+                        type="button"
+                        class="header-icon-button"
+                        aria-label="Notifications"
+                    >
+                        <i class="fa-regular fa-bell"></i>
+                    </button>
+
+                    <div class="user-profile">
+                        <div class="user-avatar">AS</div>
+
+                        <div class="user-information">
+                            <strong>Aryan</strong>
+                            <span>Survey Creator</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </header>
+
+            <!-- Page content -->
+            <div class="app-content">
+
+                <!-- Welcome section -->
+                <section class="dashboard-welcome">
+
+                    <div>
+                        <span class="welcome-label">Welcome back</span>
+                        <h2>Turn feedback into better decisions.</h2>
+
+                        <p>
+                            Create surveys, collect responses and track the
+                            latest activity from your workspace.
+                        </p>
+                    </div>
+
+                    <a href="create-survey.html" class="dashboard-create-button">
+                        <i class="fa-solid fa-plus"></i>
+                        Create Survey
+                    </a>
+
+                </section>
+
+                <!-- Statistics -->
+                <section
+                    class="dashboard-statistics"
+                    aria-label="Survey statistics"
+                >
+
+                    <article class="dashboard-stat-card">
+                        <div class="stat-icon purple">
+                            <i class="fa-solid fa-clipboard-list"></i>
+                        </div>
+
+                        <div>
+                            <span>Total Surveys</span>
+                            <strong id="total-surveys">0</strong>
+                            <small>All created surveys</small>
+                        </div>
+                    </article>
+
+                    <article class="dashboard-stat-card">
+                        <div class="stat-icon cyan">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+
+                        <div>
+                            <span>Total Responses</span>
+                            <strong id="total-responses">0</strong>
+                            <small>Across all surveys</small>
+                        </div>
+                    </article>
+
+                    <article class="dashboard-stat-card">
+                        <div class="stat-icon green">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+
+                        <div>
+                            <span>Active Surveys</span>
+                            <strong id="active-surveys">0</strong>
+                            <small>Currently collecting</small>
+                        </div>
+                    </article>
+
+                    <article class="dashboard-stat-card">
+                        <div class="stat-icon orange">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+
+                        <div>
+                            <span>Completion Rate</span>
+                            <strong id="completion-rate">0%</strong>
+                            <small>Average completion</small>
+                        </div>
+                    </article>
+
+                </section>
+
+                <!-- Dashboard grid -->
+                <section class="dashboard-content-grid">
+
+                    <!-- Recent surveys -->
+                    <article class="dashboard-panel recent-surveys-panel">
+
+                        <div class="panel-header">
+                            <div>
+                                <h2>Recent Surveys</h2>
+                                <p>Your latest survey activity</p>
+                            </div>
+
+                            <a href="my-surveys.html">View all</a>
+                        </div>
+
+                        <div
+                            class="survey-list"
+                            id="recent-surveys-list"
+                        ></div>
+
+                    </article>
+
+                    <!-- Activity -->
+                    <article class="dashboard-panel">
+
+                        <div class="panel-header">
+                            <div>
+                                <h2>Recent Activity</h2>
+                                <p>Latest workspace events</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-list">
+
+                            <div class="activity-item">
+                                <span class="activity-icon purple">
+                                    <i class="fa-solid fa-plus"></i>
+                                </span>
+
+                                <div>
+                                    <strong>Survey created</strong>
+                                    <p>Student Feedback Survey</p>
+                                    <small>Today, 10:30 AM</small>
+                                </div>
+                            </div>
+
+                            <div class="activity-item">
+                                <span class="activity-icon green">
+                                    <i class="fa-solid fa-reply"></i>
+                                </span>
+
+                                <div>
+                                    <strong>New responses</strong>
+                                    <p>12 responses were received</p>
+                                    <small>Yesterday</small>
+                                </div>
+                            </div>
+
+                            <div class="activity-item">
+                                <span class="activity-icon orange">
+                                    <i class="fa-solid fa-chart-simple"></i>
+                                </span>
+
+                                <div>
+                                    <strong>Results updated</strong>
+                                    <p>Customer Experience Survey</p>
+                                    <small>2 days ago</small>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="assets/js/dashboard.js"></script>
+
+</body>
+
+</html>
