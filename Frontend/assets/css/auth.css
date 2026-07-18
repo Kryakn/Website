@@ -519,8 +519,10 @@
 
 /* Signup Page */
 
-.signup-page .auth-container{
-    min-height:950px;
+.signup-page .auth-container {
+    height: auto;
+    min-height: 0;
+    max-height: none;
 }
 .signup-page .auth-form {
     gap: 16px;
