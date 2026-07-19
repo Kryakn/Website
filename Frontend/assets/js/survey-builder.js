@@ -6,10 +6,27 @@ document.addEventListener("DOMContentLoaded", function () {
     const addQuestionButton = document.querySelector(
         "#add-question-button"
     );
+    const surveyForm = document.querySelector(
+    "#survey-builder-form"
+);
 
-    if (!questionsContainer || !addQuestionButton) {
-        return;
-    }
+const surveyTitleInput = document.querySelector(
+    "#survey-title"
+);
+
+const formMessage = document.querySelector(
+    "#builder-form-message"
+);
+
+   if (
+    !questionsContainer ||
+    !addQuestionButton ||
+    !surveyForm ||
+    !surveyTitleInput ||
+    !formMessage
+) {
+    return;
+}
 
     function createQuestionCard(questionNumber) {
         return `
@@ -194,10 +211,137 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    
     function updateQuestionNumbers() {
         const questionCards = questionsContainer.querySelectorAll(
             ".question-card"
         );
+        function clearValidationErrors() {
+    const invalidFields = surveyForm.querySelectorAll(
+        ".field-invalid"
+    );
+
+    invalidFields.forEach(function (field) {
+        field.classList.remove("field-invalid");
+        field.removeAttribute("aria-invalid");
+    });
+
+    const errorMessages = surveyForm.querySelectorAll(
+        ".builder-field-error"
+    );
+
+    errorMessages.forEach(function (message) {
+        message.remove();
+    });
+
+    formMessage.textContent = "";
+    formMessage.className = "builder-form-message";
+}
+
+function showFieldError(field, message) {
+    field.classList.add("field-invalid");
+    field.setAttribute("aria-invalid", "true");
+
+    const errorElement = document.createElement("p");
+
+    errorElement.className = "builder-field-error";
+    errorElement.textContent = message;
+
+    field.insertAdjacentElement("afterend", errorElement);
+}
+
+function validateSurvey() {
+    clearValidationErrors();
+
+    let isValid = true;
+    let firstInvalidField = null;
+
+    if (surveyTitleInput.value.trim() === "") {
+        showFieldError(
+            surveyTitleInput,
+            "Please enter a survey title."
+        );
+
+        firstInvalidField = surveyTitleInput;
+        isValid = false;
+    }
+
+    const questionCards = questionsContainer.querySelectorAll(
+        ".question-card"
+    );
+
+    questionCards.forEach(function (card, index) {
+        const questionNumber = index + 1;
+
+        const questionInput = card.querySelector(
+            '.builder-field input[type="text"]'
+        );
+
+        const typeSelect = card.querySelector(
+            'select[id^="question-type-"]'
+        );
+
+        if (questionInput.value.trim() === "") {
+            showFieldError(
+                questionInput,
+                `Please enter text for question ${questionNumber}.`
+            );
+
+            if (!firstInvalidField) {
+                firstInvalidField = questionInput;
+            }
+
+            isValid = false;
+        }
+
+        if (typeSelect.value !== "multiple-choice") {
+            return;
+        }
+
+        const optionInputs = card.querySelectorAll(
+            ".choice-option-input"
+        );
+
+        optionInputs.forEach(function (optionInput, optionIndex) {
+            if (optionInput.value.trim() !== "") {
+                return;
+            }
+
+            showFieldError(
+                optionInput,
+                `Please enter text for option ${optionIndex + 1}.`
+            );
+
+            if (!firstInvalidField) {
+                firstInvalidField = optionInput;
+            }
+
+            isValid = false;
+        });
+    });
+
+    if (!isValid) {
+        formMessage.textContent =
+            "Please correct the highlighted fields.";
+
+        formMessage.classList.add("is-error");
+
+        firstInvalidField.focus();
+        firstInvalidField.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+        return false;
+    }
+
+    formMessage.textContent =
+        "Survey information is valid and ready to save.";
+
+    formMessage.classList.add("is-success");
+
+    return true;
+}
 
         questionCards.forEach(function (card, index) {
             const questionNumber = index + 1;
@@ -370,6 +514,14 @@ document.addEventListener("DOMContentLoaded", function () {
         optionRow.remove();
         updateOptionNumbers(optionsEditor);
     });
+    surveyForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    validateSurvey();
+});
+
+updateQuestionNumbers();
+});
 
     updateQuestionNumbers();
 });

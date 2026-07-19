@@ -335,3 +335,43 @@
     opacity: .4;
     cursor: not-allowed;
 }
+.builder-form-message {
+    display: none;
+    padding: 14px 16px;
+
+    border-radius: 12px;
+
+    font-size: .88rem;
+    font-weight: 700;
+}
+
+.builder-form-message.is-error,
+.builder-form-message.is-success {
+    display: block;
+}
+
+.builder-form-message.is-error {
+    border: 1px solid #FECACA;
+    background: #FEF2F2;
+    color: #B91C1C;
+}
+
+.builder-form-message.is-success {
+    border: 1px solid #BBF7D0;
+    background: #F0FDF4;
+    color: #15803D;
+}
+
+.builder-field input.field-invalid,
+.choice-option-input.field-invalid {
+    border-color: #DC2626;
+    background: #FFF7F7;
+}
+
+.builder-field-error {
+    margin-top: -3px;
+
+    color: #DC2626;
+    font-size: .78rem;
+    font-weight: 600;
+}
