@@ -72,6 +72,128 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
     }
 
+    function createOptionRow(optionNumber) {
+        return `
+            <div class="choice-option-row">
+                <span>${optionNumber}</span>
+
+                <input
+                    type="text"
+                    class="choice-option-input"
+                    placeholder="Option ${optionNumber}"
+                >
+
+                <button
+                    type="button"
+                    class="remove-option-button"
+                    aria-label="Remove option ${optionNumber}"
+                >
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+        `;
+    }
+
+    function createOptionsEditor() {
+        return `
+            <div class="multiple-choice-editor">
+
+                <div class="choice-editor-header">
+                    <span>Answer options</span>
+
+                    <button
+                        type="button"
+                        class="add-option-button"
+                    >
+                        <i class="fa-solid fa-plus"></i>
+                        Add Option
+                    </button>
+                </div>
+
+                <div class="choice-options-list">
+                    ${createOptionRow(1)}
+                    ${createOptionRow(2)}
+                </div>
+
+            </div>
+        `;
+    }
+
+    function updateOptionNumbers(optionsEditor) {
+        const optionRows = optionsEditor.querySelectorAll(
+            ".choice-option-row"
+        );
+
+        optionRows.forEach(function (row, index) {
+            const optionNumber = index + 1;
+
+            const number = row.querySelector(
+                ".choice-option-row > span"
+            );
+
+            const input = row.querySelector(
+                ".choice-option-input"
+            );
+
+            const removeButton = row.querySelector(
+                ".remove-option-button"
+            );
+
+            number.textContent = optionNumber;
+            input.placeholder = `Option ${optionNumber}`;
+
+            removeButton.setAttribute(
+                "aria-label",
+                `Remove option ${optionNumber}`
+            );
+
+            removeButton.disabled = optionRows.length <= 2;
+        });
+    }
+
+    function handleQuestionTypeChange(typeSelect) {
+        const questionCard = typeSelect.closest(
+            ".question-card"
+        );
+
+        const existingEditor = questionCard.querySelector(
+            ".multiple-choice-editor"
+        );
+
+        if (typeSelect.value === "multiple-choice") {
+            if (existingEditor) {
+                return;
+            }
+
+            const typeField = typeSelect.closest(
+                ".builder-field"
+            );
+
+            typeField.insertAdjacentHTML(
+                "afterend",
+                createOptionsEditor()
+            );
+
+            const newEditor = questionCard.querySelector(
+                ".multiple-choice-editor"
+            );
+
+            updateOptionNumbers(newEditor);
+
+            const firstOptionInput = newEditor.querySelector(
+                ".choice-option-input"
+            );
+
+            firstOptionInput.focus();
+
+            return;
+        }
+
+        if (existingEditor) {
+            existingEditor.remove();
+        }
+    }
+
     function updateQuestionNumbers() {
         const questionCards = questionsContainer.querySelectorAll(
             ".question-card"
@@ -93,14 +215,16 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
             const questionInput = card.querySelector(
-                'input[type="text"]'
+                '.builder-field input[type="text"]'
             );
 
             const typeLabel = card.querySelector(
                 'label[for^="question-type-"]'
             );
 
-            const typeSelect = card.querySelector("select");
+            const typeSelect = card.querySelector(
+                'select[id^="question-type-"]'
+            );
 
             heading.textContent = `Question ${questionNumber}`;
 
@@ -129,7 +253,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     addQuestionButton.addEventListener("click", function () {
         const questionNumber =
-            questionsContainer.querySelectorAll(".question-card").length + 1;
+            questionsContainer.querySelectorAll(
+                ".question-card"
+            ).length + 1;
 
         questionsContainer.insertAdjacentHTML(
             "beforeend",
@@ -145,12 +271,24 @@ document.addEventListener("DOMContentLoaded", function () {
         newQuestionInput.focus();
     });
 
+    questionsContainer.addEventListener("change", function (event) {
+        const typeSelect = event.target.closest(
+            'select[id^="question-type-"]'
+        );
+
+        if (!typeSelect) {
+            return;
+        }
+
+        handleQuestionTypeChange(typeSelect);
+    });
+
     questionsContainer.addEventListener("click", function (event) {
-        const removeButton = event.target.closest(
+        const removeQuestionButton = event.target.closest(
             ".remove-question-button"
         );
 
-        if (!removeButton) {
+        if (!removeQuestionButton) {
             return;
         }
 
@@ -162,10 +300,75 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        const questionCard = removeButton.closest(".question-card");
+        const questionCard = removeQuestionButton.closest(
+            ".question-card"
+        );
 
         questionCard.remove();
         updateQuestionNumbers();
+    });
+
+    questionsContainer.addEventListener("click", function (event) {
+        const addOptionButton = event.target.closest(
+            ".add-option-button"
+        );
+
+        if (addOptionButton) {
+            const optionsEditor = addOptionButton.closest(
+                ".multiple-choice-editor"
+            );
+
+            const optionsList = optionsEditor.querySelector(
+                ".choice-options-list"
+            );
+
+            const optionNumber =
+                optionsList.querySelectorAll(
+                    ".choice-option-row"
+                ).length + 1;
+
+            optionsList.insertAdjacentHTML(
+                "beforeend",
+                createOptionRow(optionNumber)
+            );
+
+            updateOptionNumbers(optionsEditor);
+
+            const optionInputs = optionsList.querySelectorAll(
+                ".choice-option-input"
+            );
+
+            optionInputs[optionInputs.length - 1].focus();
+
+            return;
+        }
+
+        const removeOptionButton = event.target.closest(
+            ".remove-option-button"
+        );
+
+        if (!removeOptionButton) {
+            return;
+        }
+
+        const optionsEditor = removeOptionButton.closest(
+            ".multiple-choice-editor"
+        );
+
+        const optionRows = optionsEditor.querySelectorAll(
+            ".choice-option-row"
+        );
+
+        if (optionRows.length <= 2) {
+            return;
+        }
+
+        const optionRow = removeOptionButton.closest(
+            ".choice-option-row"
+        );
+
+        optionRow.remove();
+        updateOptionNumbers(optionsEditor);
     });
 
     updateQuestionNumbers();
