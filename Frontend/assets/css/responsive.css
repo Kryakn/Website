@@ -1075,3 +1075,68 @@
         width: 100%;
     }
 }
+/* ==========================================
+   Survey Results
+========================================== */
+
+@media (max-width: 1200px) {
+    .results-statistics {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 900px) {
+    .results-content-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .results-title-panel {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .results-export-button {
+        width: 100%;
+    }
+
+    .results-bar-chart {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .results-statistics {
+        grid-template-columns: 1fr;
+    }
+
+    .results-distribution-row {
+        grid-template-columns: 100px minmax(0, 1fr) 38px;
+        gap: 9px;
+    }
+}
+
+@media (max-width: 480px) {
+    .results-back-link {
+        display: none;
+    }
+
+    .results-title-panel,
+    .results-panel {
+        padding: 18px;
+    }
+
+    .results-bar-chart {
+        height: 220px;
+        gap: 6px;
+    }
+
+    .results-distribution-row {
+        grid-template-columns: 1fr 38px;
+    }
+
+    .results-distribution-row > span {
+        grid-column: 1 / -1;
+    }
+}
