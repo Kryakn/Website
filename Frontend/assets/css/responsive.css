@@ -956,3 +956,54 @@
         width: 100%;
     }
 }
+/* ==========================================
+   My Surveys
+========================================== */
+
+@media (max-width: 1200px) {
+    .surveys-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .surveys-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .surveys-search {
+        width: 100%;
+    }
+
+    .surveys-filter {
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 600px) {
+    .surveys-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .surveys-create-link {
+        width: 42px;
+        height: 42px;
+        padding: 0;
+    }
+
+    .surveys-create-link {
+        font-size: 0;
+    }
+
+    .surveys-create-link i {
+        font-size: 1rem;
+    }
+
+    .surveys-toolbar,
+    .survey-management-card {
+        padding: 18px;
+    }
+}

@@ -1,0 +1,235 @@
+.surveys-create-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 11px 16px;
+    border-radius: 12px;
+
+    background: var(--primary-color);
+    color: white;
+
+    font-size: .9rem;
+    font-weight: 700;
+}
+
+.surveys-toolbar {
+    margin-bottom: 24px;
+    padding: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+
+    border: 1px solid var(--border-color);
+    border-radius: 18px;
+
+    background: white;
+    box-shadow: var(--shadow-sm);
+}
+
+.surveys-search {
+    position: relative;
+    width: min(100%, 440px);
+}
+
+.surveys-search i {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+
+    color: var(--text-secondary);
+    transform: translateY(-50%);
+}
+
+.surveys-search input {
+    width: 100%;
+    padding: 13px 16px 13px 44px;
+
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+
+    color: var(--text-primary);
+    font: inherit;
+}
+
+.surveys-filter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.surveys-filter label {
+    font-size: .88rem;
+    font-weight: 700;
+}
+
+.surveys-filter select {
+    padding: 12px 36px 12px 14px;
+
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+
+    background: white;
+    color: var(--text-primary);
+    font: inherit;
+}
+
+.surveys-search input:focus,
+.surveys-filter select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, .12);
+}
+
+.surveys-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.survey-management-card {
+    padding: 22px;
+
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+
+    background: white;
+    box-shadow: var(--shadow-sm);
+}
+
+.survey-card-top,
+.survey-card-footer,
+.survey-card-actions {
+    display: flex;
+    align-items: center;
+}
+
+.survey-card-top,
+.survey-card-footer {
+    justify-content: space-between;
+}
+
+.survey-status {
+    padding: 6px 11px;
+    border-radius: 999px;
+
+    font-size: .75rem;
+    font-weight: 800;
+}
+
+.status-active {
+    background: #DCFCE7;
+    color: #15803D;
+}
+
+.status-draft {
+    background: #FEF3C7;
+    color: #B45309;
+}
+
+.status-closed {
+    background: #E2E8F0;
+    color: #475569;
+}
+
+.survey-menu-button {
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.survey-card-content {
+    flex: 1;
+    padding: 24px 0;
+}
+
+.survey-card-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 18px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 14px;
+
+    background: #EEF2FF;
+    color: var(--primary-color);
+
+    font-size: 1.2rem;
+}
+
+.survey-card-content h2 {
+    margin-bottom: 9px;
+    font-size: 1.08rem;
+}
+
+.survey-card-content p {
+    color: var(--text-secondary);
+    font-size: .88rem;
+    line-height: 1.65;
+}
+
+.survey-card-statistics {
+    padding: 16px 0;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.survey-card-statistics div {
+    display: grid;
+    gap: 3px;
+}
+
+.survey-card-statistics div + div {
+    padding-left: 18px;
+    border-left: 1px solid var(--border-color);
+}
+
+.survey-card-statistics strong {
+    font-size: 1.1rem;
+}
+
+.survey-card-statistics span,
+.survey-card-footer > span {
+    color: var(--text-secondary);
+    font-size: .76rem;
+}
+
+.survey-card-footer {
+    padding-top: 18px;
+}
+
+.survey-card-actions {
+    gap: 8px;
+}
+
+.survey-card-actions a,
+.survey-card-actions button {
+    width: 34px;
+    height: 34px;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid var(--border-color);
+    border-radius: 9px;
+
+    background: white;
+    color: var(--text-secondary);
+
+    cursor: pointer;
+}

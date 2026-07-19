@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>My Surveys | VoxIntel</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <!-- VoxIntel CSS -->
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/buttons.css">
+    <link rel="stylesheet" href="assets/css/app-layout.css">
+   <link rel="stylesheet" href="assets/css/my-surveys.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+
+<body>
+
+    <div class="app-shell">
+
+        <div class="sidebar-overlay" data-sidebar-close></div>
+
+        <aside class="app-sidebar" id="app-sidebar">
+
+            <div class="sidebar-header">
+
+                <a href="dashboard.html" class="app-logo">
+                    Vox<span>Intel</span>
+                </a>
+
+                <button
+                    type="button"
+                    class="sidebar-close"
+                    data-sidebar-close
+                    aria-label="Close sidebar"
+                >
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+            </div>
+
+            <nav class="sidebar-navigation" aria-label="Application navigation">
+
+                <a href="dashboard.html" class="sidebar-link">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="my-surveys.html" class="sidebar-link active">
+                    <i class="fa-solid fa-square-plus"></i>
+                    <span>Create Survey</span>
+                </a>
+
+                <a href="my-surveys.html" class="sidebar-link">
+                    <i class="fa-solid fa-clipboard-list"></i>
+                    <span>My Surveys</span>
+                </a>
+
+                <a href="results.html" class="sidebar-link">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Results</span>
+                </a>
+
+            </nav>
+
+            <div class="sidebar-footer">
+
+                <a href="index.html" class="sidebar-link">
+                    <i class="fa-solid fa-globe"></i>
+                    <span>View Website</span>
+                </a>
+
+                <a href="login.html" class="sidebar-link">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <span>Sign Out</span>
+                </a>
+
+            </div>
+
+        </aside>
+
+        <main class="app-main">
+
+    <header class="app-header">
+
+        <div class="app-header-left">
+
+            <button
+                type="button"
+                class="sidebar-toggle"
+                aria-label="Open sidebar"
+                aria-controls="app-sidebar"
+                aria-expanded="false"
+            >
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div>
+                <h1>My Surveys</h1>
+                <p>Manage and review all your surveys.</p>
+            </div>
+
+        </div>
+
+        <div class="app-header-actions">
+
+            <a href="create-survey.html" class="surveys-create-link">
+                <i class="fa-solid fa-plus"></i>
+                Create Survey
+            </a>
+
+            <div class="user-avatar">AS</div>
+
+        </div>
+
+    </header>
+
+    <div class="app-content">
+
+        <section class="surveys-toolbar">
+
+            <div class="surveys-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <label for="survey-search" class="visually-hidden">
+                    Search surveys
+                </label>
+
+                <input
+                    type="search"
+                    id="survey-search"
+                    placeholder="Search surveys"
+                >
+            </div>
+
+            <div class="surveys-filter">
+
+                <label for="status-filter">Status</label>
+
+                <select id="status-filter">
+                    <option value="all">All surveys</option>
+                    <option value="active">Active</option>
+                    <option value="draft">Draft</option>
+                    <option value="closed">Closed</option>
+                </select>
+
+            </div>
+
+        </section>
+
+        <section
+            class="surveys-grid"
+            aria-label="Your surveys"
+        >
+
+            <article class="survey-management-card">
+
+                <div class="survey-card-top">
+
+                    <span class="survey-status status-active">
+                        Active
+                    </span>
+
+                    <button
+                        type="button"
+                        class="survey-menu-button"
+                        aria-label="More options for Customer Feedback Survey"
+                    >
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </button>
+
+                </div>
+
+                <div class="survey-card-content">
+                    <div class="survey-card-icon">
+                        <i class="fa-solid fa-comments"></i>
+                    </div>
+
+                    <h2>Customer Feedback Survey</h2>
+
+                    <p>
+                        Collect feedback about customer experience
+                        and satisfaction.
+                    </p>
+                </div>
+
+                <div class="survey-card-statistics">
+
+                    <div>
+                        <strong>128</strong>
+                        <span>Responses</span>
+                    </div>
+
+                    <div>
+                        <strong>8</strong>
+                        <span>Questions</span>
+                    </div>
+
+                </div>
+
+                <div class="survey-card-footer">
+
+                    <span>
+                        Updated today
+                    </span>
+
+                    <div class="survey-card-actions">
+
+                        <a href="results.html" aria-label="View results">
+                            <i class="fa-solid fa-chart-column"></i>
+                        </a>
+
+                        <button type="button" aria-label="Edit survey">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+
+                        <button type="button" aria-label="Share survey">
+                            <i class="fa-solid fa-share-nodes"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            <article class="survey-management-card">
+
+                <div class="survey-card-top">
+
+                    <span class="survey-status status-draft">
+                        Draft
+                    </span>
+
+                    <button
+                        type="button"
+                        class="survey-menu-button"
+                        aria-label="More options for Student Experience Survey"
+                    >
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </button>
+
+                </div>
+
+                <div class="survey-card-content">
+                    <div class="survey-card-icon">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+
+                    <h2>Student Experience Survey</h2>
+
+                    <p>
+                        Understand student opinions about classes,
+                        resources, and campus life.
+                    </p>
+                </div>
+
+                <div class="survey-card-statistics">
+
+                    <div>
+                        <strong>0</strong>
+                        <span>Responses</span>
+                    </div>
+
+                    <div>
+                        <strong>5</strong>
+                        <span>Questions</span>
+                    </div>
+
+                </div>
+
+                <div class="survey-card-footer">
+
+                    <span>
+                        Updated yesterday
+                    </span>
+
+                    <div class="survey-card-actions">
+
+                        <a href="results.html" aria-label="View results">
+                            <i class="fa-solid fa-chart-column"></i>
+                        </a>
+
+                        <button type="button" aria-label="Edit survey">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+
+                        <button type="button" aria-label="Share survey">
+                            <i class="fa-solid fa-share-nodes"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            <article class="survey-management-card">
+
+                <div class="survey-card-top">
+
+                    <span class="survey-status status-closed">
+                        Closed
+                    </span>
+
+                    <button
+                        type="button"
+                        class="survey-menu-button"
+                        aria-label="More options for Event Satisfaction Poll"
+                    >
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </button>
+
+                </div>
+
+                <div class="survey-card-content">
+                    <div class="survey-card-icon">
+                        <i class="fa-solid fa-calendar-check"></i>
+                    </div>
+
+                    <h2>Event Satisfaction Poll</h2>
+
+                    <p>
+                        Measure attendee satisfaction following the
+                        annual technology event.
+                    </p>
+                </div>
+
+                <div class="survey-card-statistics">
+
+                    <div>
+                        <strong>246</strong>
+                        <span>Responses</span>
+                    </div>
+
+                    <div>
+                        <strong>6</strong>
+                        <span>Questions</span>
+                    </div>
+
+                </div>
+
+                <div class="survey-card-footer">
+
+                    <span>
+                        Updated 12 Jul
+                    </span>
+
+                    <div class="survey-card-actions">
+
+                        <a href="results.html" aria-label="View results">
+                            <i class="fa-solid fa-chart-column"></i>
+                        </a>
+
+                        <button type="button" aria-label="Edit survey">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+
+                        <button type="button" aria-label="Share survey">
+                            <i class="fa-solid fa-share-nodes"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+
+    </div>
+
+</main>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>
