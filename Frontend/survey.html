@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Customer Feedback Survey | VoxIntel</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <!-- VoxIntel CSS -->
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/buttons.css">
+    <link rel="stylesheet" href="assets/css/survey.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+
+<body class="participation-page">
+
+    <header class="participation-header">
+
+        <a href="index.html" class="participation-logo">
+            Vox<span>Intel</span>
+        </a>
+
+        <span class="participation-security">
+            <i class="fa-solid fa-lock"></i>
+            Secure survey
+        </span>
+
+    </header>
+
+    <main class="participation-main">
+
+        <div class="participation-container">
+
+            <div class="participation-progress-area">
+
+                <div class="participation-progress-text">
+                    <span>Survey progress</span>
+                    <strong>1 of 4</strong>
+                </div>
+
+                <div
+                    class="participation-progress-track"
+                    role="progressbar"
+                    aria-label="Survey progress"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    aria-valuenow="25"
+                >
+                    <div class="participation-progress-fill"></div>
+                </div>
+
+            </div>
+
+            <div class="participation-introduction">
+
+                <span class="participation-category">
+                    Customer Feedback
+                </span>
+
+                <h1>Customer Experience Survey</h1>
+
+                <p>
+                    Help us improve our service by sharing your experience.
+                    This survey should take approximately three minutes.
+                </p>
+
+                <div class="participation-meta">
+
+                    <span>
+                        <i class="fa-regular fa-clock"></i>
+                        3 minutes
+                    </span>
+
+                    <span>
+                        <i class="fa-solid fa-list-check"></i>
+                        4 questions
+                    </span>
+
+                </div>
+
+            </div>
+
+            <form class="participation-form">
+
+                <fieldset class="participation-question">
+
+                    <legend>
+                        <span>1</span>
+                        How satisfied are you with our service?
+                        <strong aria-label="Required">*</strong>
+                    </legend>
+
+                    <div class="participation-options">
+
+                        <label class="participation-option">
+                            <input
+                                type="radio"
+                                name="satisfaction"
+                                value="very-satisfied"
+                                required
+                            >
+                            <span>Very satisfied</span>
+                        </label>
+
+                        <label class="participation-option">
+                            <input
+                                type="radio"
+                                name="satisfaction"
+                                value="satisfied"
+                            >
+                            <span>Satisfied</span>
+                        </label>
+
+                        <label class="participation-option">
+                            <input
+                                type="radio"
+                                name="satisfaction"
+                                value="neutral"
+                            >
+                            <span>Neutral</span>
+                        </label>
+
+                        <label class="participation-option">
+                            <input
+                                type="radio"
+                                name="satisfaction"
+                                value="dissatisfied"
+                            >
+                            <span>Dissatisfied</span>
+                        </label>
+
+                    </div>
+
+                </fieldset>
+
+                <fieldset class="participation-question">
+
+                    <legend>
+                        <span>2</span>
+                        Which parts of our service did you use?
+                    </legend>
+
+                    <div class="participation-options">
+
+                        <label class="participation-option">
+                            <input
+                                type="checkbox"
+                                name="services"
+                                value="support"
+                            >
+                            <span>Customer support</span>
+                        </label>
+
+                        <label class="participation-option">
+                            <input
+                                type="checkbox"
+                                name="services"
+                                value="website"
+                            >
+                            <span>Website</span>
+                        </label>
+
+                        <label class="participation-option">
+                            <input
+                                type="checkbox"
+                                name="services"
+                                value="analytics"
+                            >
+                            <span>Analytics dashboard</span>
+                        </label>
+
+                    </div>
+
+                </fieldset>
+
+                <fieldset class="participation-question">
+
+                    <legend>
+                        <span>3</span>
+                        How likely are you to recommend us?
+                        <strong aria-label="Required">*</strong>
+                    </legend>
+
+                    <div class="participation-rating">
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="recommendation"
+                                value="1"
+                                required
+                            >
+                            <span>1</span>
+                        </label>
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="recommendation"
+                                value="2"
+                            >
+                            <span>2</span>
+                        </label>
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="recommendation"
+                                value="3"
+                            >
+                            <span>3</span>
+                        </label>
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="recommendation"
+                                value="4"
+                            >
+                            <span>4</span>
+                        </label>
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="recommendation"
+                                value="5"
+                            >
+                            <span>5</span>
+                        </label>
+
+                    </div>
+
+                    <div class="participation-rating-labels">
+                        <span>Not likely</span>
+                        <span>Very likely</span>
+                    </div>
+
+                </fieldset>
+
+                <fieldset class="participation-question">
+
+                    <legend>
+                        <span>4</span>
+                        What could we improve?
+                    </legend>
+
+                    <label
+                        for="improvement-feedback"
+                        class="visually-hidden"
+                    >
+                        Improvement feedback
+                    </label>
+
+                    <textarea
+                        id="improvement-feedback"
+                        name="feedback"
+                        rows="5"
+                        placeholder="Share your suggestions here"
+                    ></textarea>
+
+                </fieldset>
+
+                <div class="participation-actions">
+
+                    <p>
+                        <i class="fa-solid fa-shield-halved"></i>
+                        Your answers remain private.
+                    </p>
+
+                    <button
+                        type="submit"
+                        class="participation-submit"
+                    >
+                        Submit Response
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+                </div>
+
+            </form>
+
+            <footer class="participation-footer">
+                Powered by
+                <a href="index.html">VoxIntel</a>
+            </footer>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

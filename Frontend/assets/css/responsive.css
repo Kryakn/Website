@@ -1007,3 +1007,71 @@
         padding: 18px;
     }
 }
+/* ==========================================
+   Survey Participation Page
+========================================== */
+
+@media (max-width: 768px) {
+    .participation-main {
+        padding: 32px 16px;
+    }
+
+    .participation-introduction {
+        padding: 28px;
+    }
+
+    .participation-introduction h1 {
+        font-size: 1.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .participation-header {
+        padding: 12px 16px;
+    }
+
+    .participation-security {
+        font-size: 0;
+    }
+
+    .participation-security i {
+        font-size: 1rem;
+    }
+
+    .participation-main {
+        padding: 24px 12px;
+    }
+
+    .participation-introduction,
+    .participation-question {
+        padding: 20px;
+        border-radius: 18px;
+    }
+
+    .participation-introduction h1 {
+        font-size: 1.45rem;
+    }
+
+    .participation-meta {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .participation-rating {
+        gap: 6px;
+    }
+
+    .participation-rating span {
+        height: 43px;
+    }
+
+    .participation-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .participation-submit {
+        width: 100%;
+    }
+}
