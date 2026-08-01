@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs");
 const User = require("../models/User");
+const generateToken = require("../utils/generateToken");
 
 async function registerUser(request, response) {
     try {
@@ -46,6 +47,8 @@ async function registerUser(request, response) {
             email: normalizedEmail,
             passwordHash,
         });
+
+        const token = generateToken(user._id.toString());
 
         return response.status(201).json({
             success: true,
@@ -129,6 +132,8 @@ async function loginUser(request, response) {
                 email: user.email,
             },
         });
+
+        const token = generateToken(user._id.toString());
     } catch (error) {
         console.error("Login failed:", error.message);
 
