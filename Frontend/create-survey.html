@@ -4,10 +4,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Create Survey | VoxIntel</title>
 
@@ -17,14 +14,10 @@
 
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
-        rel="stylesheet"
-    >
+        rel="stylesheet">
 
     <!-- Font Awesome -->
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-    >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     <!-- VoxIntel CSS -->
     <link rel="stylesheet" href="assets/css/variables.css">
@@ -49,12 +42,7 @@
                     Vox<span>Intel</span>
                 </a>
 
-                <button
-                    type="button"
-                    class="sidebar-close"
-                    data-sidebar-close
-                    aria-label="Close sidebar"
-                >
+                <button type="button" class="sidebar-close" data-sidebar-close aria-label="Close sidebar">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
 
@@ -106,13 +94,8 @@
 
                 <div class="app-header-left">
 
-                    <button
-                        type="button"
-                        class="sidebar-toggle"
-                        aria-label="Open sidebar"
-                        aria-controls="app-sidebar"
-                        aria-expanded="false"
-                    >
+                    <button type="button" class="sidebar-toggle" aria-label="Open sidebar" aria-controls="app-sidebar"
+                        aria-expanded="false">
                         <i class="fa-solid fa-bars"></i>
                     </button>
 
@@ -139,12 +122,7 @@
             <div class="app-content">
 
                 <form class="survey-builder-form" id="survey-builder-form" novalidate>
-                    <div
-    class="builder-form-message"
-    id="builder-form-message"
-    role="status"
-    aria-live="polite"
-></div>
+                    <div class="builder-form-message" id="builder-form-message" role="status" aria-live="polite"></div>
                     <!-- Survey information -->
                     <section class="builder-panel">
 
@@ -162,12 +140,8 @@
                             <div class="builder-field full-width">
                                 <label for="survey-title">Survey title</label>
 
-                                <input
-                                    type="text"
-                                    id="survey-title"
-                                    placeholder="Example: Student Feedback Survey"
-                                    required
-                                >
+                                <input type="text" id="survey-title" placeholder="Example: Student Feedback Survey"
+                                    required>
                             </div>
 
                             <div class="builder-field full-width">
@@ -175,11 +149,8 @@
                                     Description
                                 </label>
 
-                                <textarea
-                                    id="survey-description"
-                                    rows="4"
-                                    placeholder="Explain what this survey is about"
-                                ></textarea>
+                                <textarea id="survey-description" rows="4"
+                                    placeholder="Explain what this survey is about"></textarea>
                             </div>
 
                             <div class="builder-field">
@@ -221,11 +192,7 @@
                                 </div>
                             </div>
 
-                            <button
-                                type="button"
-                                class="add-question-button"
-                                id="add-question-button"
-                            >
+                            <button type="button" class="add-question-button" id="add-question-button">
                                 <i class="fa-solid fa-plus"></i>
                                 Add Question
                             </button>
@@ -240,12 +207,8 @@
                                 <div class="question-card-header">
                                     <span>Question 1</span>
 
-                                    <button
-                                        type="button"
-                                        class="remove-question-button"
-                                        aria-label="Remove question 1"
-                                        disabled
-                                    >
+                                    <button type="button" class="remove-question-button" aria-label="Remove question 1"
+                                        disabled>
                                         <i class="fa-regular fa-trash-can"></i>
                                     </button>
                                 </div>
@@ -255,11 +218,7 @@
                                         Question text
                                     </label>
 
-                                    <input
-                                        type="text"
-                                        id="question-1"
-                                        placeholder="Enter your question"
-                                    >
+                                    <input type="text" id="question-1" placeholder="Enter your question">
                                 </div>
 
                                 <div class="builder-field">
@@ -304,17 +263,11 @@
                             Cancel
                         </a>
 
-                        <button
-                            type="button"
-                            class="builder-draft-button"
-                        >
+                        <button type="button" class="builder-draft-button">
                             Save Draft
                         </button>
 
-                        <button
-                            type="submit"
-                            class="builder-publish-button"
-                        >
+                        <button type="submit" class="builder-publish-button">
                             <i class="fa-solid fa-paper-plane"></i>
                             Publish Survey
                         </button>
@@ -329,9 +282,9 @@
 
     </div>
     <script src="assets/js/app.js"></script>
-   <script src="assets/js/survey-builder.js"></script>
+    <script src="assets/js/survey-builder.js"></script>
 
-    
+
 </body>
 
 </html>
