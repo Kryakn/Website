@@ -122,7 +122,7 @@ async function loginUser(request, response) {
                 message: "Invalid email or password",
             });
         }
-
+        const token = generateToken(user._id.toString());
         return response.status(200).json({
             success: true,
             message: "Login successful",
@@ -133,7 +133,7 @@ async function loginUser(request, response) {
             },
         });
 
-        const token = generateToken(user._id.toString());
+        
     } catch (error) {
         console.error("Login failed:", error.message);
 
