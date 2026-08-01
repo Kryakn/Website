@@ -84,6 +84,62 @@ async function registerUser(request, response) {
     }
 }
 
+async function loginUser(request, response) {
+    try {
+        const { email, password } = request.body;
+
+        if (!email || !password) {
+            return response.status(400).json({
+                success: false,
+                message: "Email and password are required",
+            });
+        }
+
+        const normalizedEmail = email.trim().toLowerCase();
+
+        const user = await User.findOne({
+            email: normalizedEmail,
+        }).select("+passwordHash");
+
+        if (!user) {
+            return response.status(401).json({
+                success: false,
+                message: "Invalid email or password",
+            });
+        }
+
+        const passwordMatches = await bcrypt.compare(
+            password,
+            user.passwordHash
+        );
+
+        if (!passwordMatches) {
+            return response.status(401).json({
+                success: false,
+                message: "Invalid email or password",
+            });
+        }
+
+        return response.status(200).json({
+            success: true,
+            message: "Login successful",
+            user: {
+                id: user._id,
+                fullName: user.fullName,
+                email: user.email,
+            },
+        });
+    } catch (error) {
+        console.error("Login failed:", error.message);
+
+        return response.status(500).json({
+            success: false,
+            message: "Unable to log in",
+        });
+    }
+}
+
 module.exports = {
     registerUser,
-}; 
+    loginUser,
+};
