@@ -145,7 +145,6 @@ async function loginUser(request, response) {
         });
     }
 }
-
 module.exports = {
     registerUser,
     loginUser,
