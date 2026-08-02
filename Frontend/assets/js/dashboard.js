@@ -1,202 +1,101 @@
-document.addEventListener("DOMContentLoaded",async function () {
-        const appShell = document.querySelector(".app-shell");
-
+document.addEventListener("DOMContentLoaded", async function () {
+    const appShell = document.querySelector(".app-shell");
+    const recentSurveysList = document.querySelector(
+        "#recent-surveys-list"
+    );
     const token = localStorage.getItem("voxintelToken");
 
-    if (!token) {
+    if (!token || !window.voxintelApi) {
         window.location.replace("login.html");
         return;
     }
 
     try {
-        const response = await fetch(
-            "http://localhost:5000/api/auth/me",
-            {
-                method: "GET",
-
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            }
-        );
-
-        const data = await response.json();
-
-        if (
-            !response.ok ||
-            !data.success ||
-            !data.user
-        ) {
-            localStorage.removeItem("voxintelToken");
-            window.location.replace("login.html");
-            return;
-        }
+        const data = await window.voxintelApi.request("/auth/me", {
+            method: "GET",
+            auth: true
+        });
 
         const fullName = data.user.fullName.trim();
-
         const initials = fullName
             .split(/\s+/)
             .filter(Boolean)
             .slice(0, 2)
-            .map(function (namePart) {
-                return namePart.charAt(0);
+            .map(function (part) {
+                return part.charAt(0);
             })
             .join("")
             .toUpperCase();
 
-        const userNameElement = document.querySelector(
-            ".user-information strong"
-        );
-
-        const userAvatarElement = document.querySelector(
-            ".user-avatar"
-        );
-
-        if (userNameElement) {
-            userNameElement.textContent = fullName;
-        }
-
-        if (userAvatarElement) {
-            userAvatarElement.textContent = initials;
-        }
-
+        document.querySelector(".user-information strong").textContent =
+            fullName;
+        document.querySelector(".user-avatar").textContent = initials;
         appShell?.removeAttribute("hidden");
     } catch (error) {
-        console.error(
-            "Session verification failed:",
-            error
-        );
-
-        window.location.replace("login.html");
+        console.error("Session verification failed:", error);
         return;
     }
+
     const sidebar = document.querySelector(".app-sidebar");
     const sidebarToggle = document.querySelector(".sidebar-toggle");
     const sidebarOverlay = document.querySelector(".sidebar-overlay");
     const logoutLink = document.querySelector("[data-logout]");
-    function logoutUser(event) {
-    event.preventDefault();
-
-    localStorage.removeItem("voxintelToken");
-
-    window.location.replace("login.html");
-}
-
-logoutLink?.addEventListener("click", logoutUser);
-    const sidebarCloseButtons =
-        document.querySelectorAll("[data-sidebar-close]");
-
-    const recentSurveysList =
-        document.querySelector("#recent-surveys-list");
-
-    const sampleSurveys = [
-        {
-            id: "sample-1",
-            title: "Student Feedback Survey",
-            status: "active",
-            responses: 128,
-            createdAt: "Today"
-        },
-        {
-            id: "sample-2",
-            title: "Customer Experience Survey",
-            status: "active",
-            responses: 84,
-            createdAt: "Yesterday"
-        },
-        {
-            id: "sample-3",
-            title: "Event Satisfaction Poll",
-            status: "draft",
-            responses: 0,
-            createdAt: "2 days ago"
-        }
-    ];
+    const sidebarCloseButtons = document.querySelectorAll(
+        "[data-sidebar-close]"
+    );
 
     function openSidebar() {
-        if (!sidebar || !sidebarToggle || !sidebarOverlay) {
-            return;
-        }
-
-        sidebar.classList.add("is-open");
-        sidebarOverlay.classList.add("is-visible");
-        sidebarToggle.setAttribute("aria-expanded", "true");
+        sidebar?.classList.add("is-open");
+        sidebarOverlay?.classList.add("is-visible");
+        sidebarToggle?.setAttribute("aria-expanded", "true");
         document.body.style.overflow = "hidden";
     }
 
     function closeSidebar() {
-        if (!sidebar || !sidebarToggle || !sidebarOverlay) {
-            return;
-        }
-
-        sidebar.classList.remove("is-open");
-        sidebarOverlay.classList.remove("is-visible");
-        sidebarToggle.setAttribute("aria-expanded", "false");
+        sidebar?.classList.remove("is-open");
+        sidebarOverlay?.classList.remove("is-visible");
+        sidebarToggle?.setAttribute("aria-expanded", "false");
         document.body.style.overflow = "";
     }
 
     sidebarToggle?.addEventListener("click", openSidebar);
-
     sidebarCloseButtons.forEach(function (button) {
         button.addEventListener("click", closeSidebar);
     });
-
     document.addEventListener("keydown", function (event) {
         if (event.key === "Escape") {
             closeSidebar();
         }
     });
-
     window.addEventListener("resize", function () {
         if (window.innerWidth > 900) {
             closeSidebar();
         }
     });
-
-    function getStoredSurveys() {
-        try {
-            const storedSurveys =
-                JSON.parse(localStorage.getItem("voxintel_surveys"));
-
-            return Array.isArray(storedSurveys)
-                ? storedSurveys
-                : [];
-        } catch (error) {
-            console.error("Unable to read stored surveys:", error);
-            return [];
-        }
-    }
+    logoutLink?.addEventListener("click", function (event) {
+        event.preventDefault();
+        localStorage.removeItem("voxintelToken");
+        window.location.replace("login.html");
+    });
 
     function renderStatistics(surveys) {
-        const totalSurveys = surveys.length;
-
-        const activeSurveys = surveys.filter(function (survey) {
-            return survey.status === "active";
+        const publishedSurveys = surveys.filter(function (survey) {
+            return survey.status === "published";
         }).length;
-
-        const totalResponses = surveys.reduce(function (total, survey) {
-            return total + Number(survey.responses || 0);
-        }, 0);
-
-        const completedSurveys = surveys.filter(function (survey) {
-            return Number(survey.responses || 0) > 0;
-        }).length;
-
-        const completionRate = totalSurveys
-            ? Math.round((completedSurveys / totalSurveys) * 100)
-            : 0;
 
         document.querySelector("#total-surveys").textContent =
-            totalSurveys;
-
-        document.querySelector("#total-responses").textContent =
-            totalResponses;
-
+            surveys.length;
         document.querySelector("#active-surveys").textContent =
-            activeSurveys;
+            publishedSurveys;
 
-        document.querySelector("#completion-rate").textContent =
-            `${completionRate}%`;
+        const totalResponses = document.querySelector("#total-responses");
+        const completionRate = document.querySelector("#completion-rate");
+        totalResponses.textContent = "—";
+        completionRate.textContent = "—";
+        totalResponses.title =
+            "Response totals require the owner analytics API.";
+        completionRate.title =
+            "Completion rate requires the owner analytics API.";
     }
 
     function renderRecentSurveys(surveys) {
@@ -210,62 +109,68 @@ logoutLink?.addEventListener("click", logoutUser);
                     <i class="fa-regular fa-clipboard"></i>
                     <h3>No surveys yet</h3>
                     <p>Create your first survey to see it here.</p>
-                    <a
-                        href="create-survey.html"
-                        class="dashboard-create-button"
-                    >
+                    <a href="create-survey.html" class="dashboard-create-button">
                         Create Survey
                     </a>
                 </div>
             `;
-
             return;
         }
 
         recentSurveysList.innerHTML = surveys
             .slice(0, 4)
             .map(function (survey) {
-                const safeStatus =
-                    survey.status === "active" ? "active" : "draft";
+                const status = survey.status === "published"
+                    ? "active"
+                    : "draft";
+                const destination = survey.status === "published"
+                    ? `results.html?id=${encodeURIComponent(survey._id)}`
+                    : `my-surveys.html?id=${encodeURIComponent(survey._id)}`;
 
                 return `
                     <div class="survey-list-item">
-
                         <div class="survey-information">
-                            <h3>${survey.title}</h3>
-                            <p>Created ${survey.createdAt || "recently"}</p>
+                            <h3>${window.voxintelApi.escapeHtml(survey.title)}</h3>
+                            <p>Created ${window.voxintelApi.formatDate(survey.createdAt)}</p>
                         </div>
-
                         <div class="survey-details">
-                            <span class="survey-response-count">
-                                ${Number(survey.responses || 0)} responses
+                            <span class="survey-response-count" title="Available after analytics API integration">
+                                Responses —
                             </span>
-
-                            <span class="survey-status ${safeStatus}">
-                                ${safeStatus}
+                            <span class="survey-status ${status}">
+                                ${survey.status === "published" ? "published" : "draft"}
                             </span>
-
-                            <a
-                                href="results.html?id=${survey.id}"
-                                class="survey-action"
-                                aria-label="View ${survey.title}"
-                            >
+                            <a href="${destination}" class="survey-action" aria-label="View ${window.voxintelApi.escapeHtml(survey.title)}">
                                 <i class="fa-solid fa-arrow-right"></i>
                             </a>
                         </div>
-
                     </div>
                 `;
             })
             .join("");
     }
 
-    const storedSurveys = getStoredSurveys();
+    try {
+        const data = await window.voxintelApi.request("/surveys", {
+            method: "GET",
+            auth: true
+        });
 
-    // Use sample data until the user creates real surveys.
-    const dashboardSurveys =
-        storedSurveys.length > 0 ? storedSurveys : sampleSurveys;
+        const surveys = Array.isArray(data.surveys) ? data.surveys : [];
+        renderStatistics(surveys);
+        renderRecentSurveys(surveys);
+    } catch (error) {
+        console.error("Unable to load dashboard surveys:", error);
+        renderStatistics([]);
 
-    renderStatistics(dashboardSurveys);
-    renderRecentSurveys(dashboardSurveys);
+        if (recentSurveysList) {
+            recentSurveysList.innerHTML = `
+                <div class="empty-surveys">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <h3>Unable to load surveys</h3>
+                    <p>${window.voxintelApi.escapeHtml(error.message)}</p>
+                </div>
+            `;
+        }
+    }
 });

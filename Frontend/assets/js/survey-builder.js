@@ -19,12 +19,23 @@ document.addEventListener("DOMContentLoaded", function () {
         "#builder-form-message"
     );
 
+    const saveDraftButton = document.querySelector(
+        ".builder-draft-button"
+    );
+
+    const publishButton = document.querySelector(
+        ".builder-publish-button"
+    );
+
     if (
         !questionsContainer ||
         !addQuestionButton ||
         !surveyForm ||
         !surveyTitleInput ||
-        !formMessage
+        !formMessage ||
+        !saveDraftButton ||
+        !publishButton ||
+        !window.voxintelApi
     ) {
         return;
     }
@@ -588,16 +599,131 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     );
 
-    /*
-     * Validate the form when Publish Survey is clicked.
-     */
-    surveyForm.addEventListener(
-        "submit",
-        function (event) {
-            event.preventDefault();
-            validateSurvey();
+    function getSurveyPayload() {
+        const questions = Array.from(
+            questionsContainer.querySelectorAll(".question-card")
+        ).map(function (card) {
+            const type = card.querySelector(
+                'select[id^="question-type-"]'
+            ).value;
+
+            const options = type === "multiple-choice"
+                ? Array.from(
+                    card.querySelectorAll(".choice-option-input")
+                ).map(function (input) {
+                    return input.value.trim();
+                })
+                : [];
+
+            return {
+                text: card.querySelector(
+                    '.builder-field input[type="text"]'
+                ).value.trim(),
+                type,
+                required: card.querySelector(
+                    '.required-question-control input[type="checkbox"]'
+                ).checked,
+                options
+            };
+        });
+
+        return {
+            title: surveyTitleInput.value.trim(),
+            description: document.querySelector(
+                "#survey-description"
+            ).value.trim(),
+            category: document.querySelector(
+                "#survey-category"
+            ).value,
+            questions
+        };
+    }
+
+    function setSavingState(isSaving, action) {
+        saveDraftButton.disabled = isSaving;
+        publishButton.disabled = isSaving;
+
+        saveDraftButton.textContent =
+            isSaving && action === "draft" ? "Saving..." : "Save Draft";
+
+        publishButton.innerHTML = isSaving && action === "publish"
+            ? '<i class="fa-solid fa-spinner fa-spin"></i> Publishing...'
+            : '<i class="fa-solid fa-paper-plane"></i> Publish Survey';
+    }
+
+    async function saveSurvey(action) {
+        if (!validateSurvey()) {
+            return;
         }
-    );
+
+        setSavingState(true, action);
+        formMessage.textContent = action === "publish"
+            ? "Creating and publishing your survey..."
+            : "Saving your survey as a draft...";
+        formMessage.className = "builder-form-message";
+
+        try {
+            const created = await window.voxintelApi.request(
+                "/surveys",
+                {
+                    method: "POST",
+                    auth: true,
+                    body: getSurveyPayload()
+                }
+            );
+
+            let survey = created.survey;
+
+            if (action === "publish") {
+                const published = await window.voxintelApi.request(
+                    `/surveys/${survey._id}/publish`,
+                    {
+                        method: "PATCH",
+                        auth: true
+                    }
+                );
+
+                survey = published.survey;
+                formMessage.textContent =
+                    "Survey published. Opening the public response page...";
+                formMessage.className =
+                    "builder-form-message is-success";
+
+                window.setTimeout(function () {
+                    window.location.assign(
+                        `survey.html?id=${encodeURIComponent(survey._id)}`
+                    );
+                }, 900);
+
+                return;
+            }
+
+            formMessage.textContent =
+                "Draft saved. Opening My Surveys...";
+            formMessage.className =
+                "builder-form-message is-success";
+
+            window.setTimeout(function () {
+                window.location.assign(
+                    `my-surveys.html?created=${encodeURIComponent(survey._id)}`
+                );
+            }, 700);
+        } catch (error) {
+            console.error("Unable to save survey:", error);
+            formMessage.textContent = error.message;
+            formMessage.className = "builder-form-message is-error";
+            setSavingState(false, action);
+        }
+    }
+
+    surveyForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        saveSurvey("publish");
+    });
+
+    saveDraftButton.addEventListener("click", function () {
+        saveSurvey("draft");
+    });
 
     /*
      * Initialize question numbering and button states.

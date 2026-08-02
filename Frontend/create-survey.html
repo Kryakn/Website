@@ -168,9 +168,8 @@
                             <div class="builder-field">
                                 <label for="survey-status">Initial status</label>
 
-                                <select id="survey-status">
-                                    <option value="draft">Draft</option>
-                                    <option value="active">Active</option>
+                                <select id="survey-status" disabled>
+                                    <option value="draft">Draft until published</option>
                                 </select>
                             </div>
 
@@ -281,6 +280,7 @@
         </main>
 
     </div>
+    <script src="assets/js/api.js"></script>
     <script src="assets/js/app.js"></script>
     <script src="assets/js/survey-builder.js"></script>
 

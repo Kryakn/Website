@@ -269,6 +269,43 @@
     font: inherit;
 }
 
+.participation-text-input {
+    width: 100%;
+    padding: 15px 16px;
+
+    border: 1px solid var(--border-color);
+    border-radius: 13px;
+
+    color: var(--text-primary);
+    font: inherit;
+}
+
+.participation-text-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, .12);
+}
+
+#participation-questions {
+    display: grid;
+    gap: 20px;
+}
+
+.participation-message {
+    min-height: 22px;
+    color: var(--text-secondary);
+    font-size: .86rem;
+}
+
+.participation-message.is-error {
+    color: #B91C1C;
+}
+
+.participation-success {
+    margin-bottom: 0;
+    text-align: center;
+}
+
 .participation-question textarea:focus {
     outline: none;
     border-color: var(--primary-color);
