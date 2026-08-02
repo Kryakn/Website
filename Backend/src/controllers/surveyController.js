@@ -180,10 +180,68 @@ async function updateDraftSurvey(request, response) {
         });
     }
 }
+async function publishSurvey(request, response) {
+    try {
+        const survey = await Survey.findOne({
+            _id: request.params.surveyId,
+            owner: request.user._id,
+        });
+
+        if (!survey) {
+            return response.status(404).json({
+                success: false,
+                message: "Survey not found",
+            });
+        }
+
+        if (survey.status !== "draft") {
+            return response.status(409).json({
+                success: false,
+                message: "Only draft surveys can be published",
+            });
+        }
+
+        survey.status = "published";
+        survey.publishedAt = new Date();
+
+        await survey.save();
+
+        return response.status(200).json({
+            success: true,
+            message: "Survey published successfully",
+            survey,
+        });
+    } catch (error) {
+        console.error("Survey publishing failed:", error.message);
+
+        if (error.name === "CastError") {
+            return response.status(400).json({
+                success: false,
+                message: "Invalid survey ID",
+            });
+        }
+
+        if (error.name === "ValidationError") {
+            const firstValidationError =
+                Object.values(error.errors)[0];
+
+            return response.status(400).json({
+                success: false,
+                message: firstValidationError.message,
+            });
+        }
+
+        return response.status(500).json({
+            success: false,
+            message: "Unable to publish survey",
+        });
+    }
+}
 
 module.exports = {
     createSurvey,
     getUserSurveys,
     getSurveyById,
     updateDraftSurvey,
+    publishSurvey,
 };
