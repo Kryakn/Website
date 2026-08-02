@@ -210,9 +210,248 @@ async function getSurveyResponses(request, response) {
         });
     }
 }
+async function getSurveyAnalytics(request, response) {
+    try {
+        const { surveyId } = request.params;
+
+        if (!mongoose.isValidObjectId(surveyId)) {
+            return response.status(400).json({
+                success: false,
+                message: "Invalid survey ID",
+            });
+        }
+
+        const survey = await Survey.findOne({
+            _id: surveyId,
+            owner: request.user._id,
+        }).select("_id title status questions");
+
+        if (!survey) {
+            return response.status(404).json({
+                success: false,
+                message: "Survey not found",
+            });
+        }
+
+        const [aggregationResult] = await SurveyResponse.aggregate([
+            {
+                $match: {
+                    survey: survey._id,
+                },
+            },
+            {
+                $facet: {
+                    summary: [
+                        {
+                            $count: "totalResponses",
+                        },
+                    ],
+
+                    answerRows: [
+                        {
+                            $unwind: "$answers",
+                        },
+                        {
+                            $project: {
+                                _id: 0,
+                                questionId: "$answers.questionId",
+                                value: "$answers.value",
+                                submittedAt: "$createdAt",
+                            },
+                        },
+                    ],
+
+                    responsesOverTime: [
+                        {
+                            $group: {
+                                _id: {
+                                    $dateToString: {
+                                        format: "%Y-%m-%d",
+                                        date: "$createdAt",
+                                    },
+                                },
+                                count: {
+                                    $sum: 1,
+                                },
+                            },
+                        },
+                        {
+                            $sort: {
+                                _id: 1,
+                            },
+                        },
+                    ],
+                },
+            },
+        ]);
+
+        const analyticsData = aggregationResult || {
+            summary: [],
+            answerRows: [],
+            responsesOverTime: [],
+        };
+
+        const totalResponses =
+            analyticsData.summary[0]?.totalResponses || 0;
+
+        const questionAnalytics = survey.questions.map(
+            (question) => {
+                const questionRows =
+                    analyticsData.answerRows.filter(
+                        (row) =>
+                            String(row.questionId) ===
+                            String(question._id)
+                    );
+
+                const analytics = {
+                    questionId: question._id,
+                    text: question.text,
+                    type: question.type,
+                    responseCount: questionRows.length,
+                    unansweredCount:
+                        totalResponses - questionRows.length,
+                };
+
+                if (question.type === "multiple-choice") {
+                    const optionCounts = new Map(
+                        question.options.map((option) => [
+                            option,
+                            0,
+                        ])
+                    );
+
+                    for (const row of questionRows) {
+                        const selectedOption = String(row.value);
+
+                        if (optionCounts.has(selectedOption)) {
+                            optionCounts.set(
+                                selectedOption,
+                                optionCounts.get(selectedOption) + 1
+                            );
+                        }
+                    }
+
+                    analytics.options = question.options.map(
+                        (option) => {
+                            const count =
+                                optionCounts.get(option) || 0;
+
+                            const percentage =
+                                questionRows.length === 0
+                                    ? 0
+                                    : Number(
+                                          (
+                                              (count /
+                                                  questionRows.length) *
+                                              100
+                                          ).toFixed(2)
+                                      );
+
+                            return {
+                                option,
+                                count,
+                                percentage,
+                            };
+                        }
+                    );
+                }
+
+                if (question.type === "rating") {
+                    const ratings = questionRows
+                        .map((row) => Number(row.value))
+                        .filter(
+                            (rating) =>
+                                Number.isInteger(rating) &&
+                                rating >= 1 &&
+                                rating <= 5
+                        );
+
+                    const ratingTotal = ratings.reduce(
+                        (sum, rating) => sum + rating,
+                        0
+                    );
+
+                    analytics.averageRating =
+                        ratings.length === 0
+                            ? 0
+                            : Number(
+                                  (
+                                      ratingTotal / ratings.length
+                                  ).toFixed(2)
+                              );
+
+                    analytics.distribution = [1, 2, 3, 4, 5].map(
+                        (rating) => {
+                            const count = ratings.filter(
+                                (value) => value === rating
+                            ).length;
+
+                            const percentage =
+                                ratings.length === 0
+                                    ? 0
+                                    : Number(
+                                          (
+                                              (count /
+                                                  ratings.length) *
+                                              100
+                                          ).toFixed(2)
+                                      );
+
+                            return {
+                                rating,
+                                count,
+                                percentage,
+                            };
+                        }
+                    );
+                }
+
+                if (
+                    question.type === "short-text" ||
+                    question.type === "long-text"
+                ) {
+                    analytics.answers = questionRows.map((row) => ({
+                        value: String(row.value),
+                        submittedAt: row.submittedAt,
+                    }));
+                }
+
+                return analytics;
+            }
+        );
+
+        const responsesOverTime =
+            analyticsData.responsesOverTime.map((item) => ({
+                date: item._id,
+                count: item.count,
+            }));
+
+        return response.status(200).json({
+            success: true,
+            survey: {
+                _id: survey._id,
+                title: survey.title,
+                status: survey.status,
+            },
+            totalResponses,
+            questionAnalytics,
+            responsesOverTime,
+        });
+    } catch (error) {
+        console.error(
+            "Survey analytics retrieval failed:",
+            error.message
+        );
+
+        return response.status(500).json({
+            success: false,
+            message: "Unable to retrieve survey analytics",
+        });
+    }
+}
 
 module.exports = {
     submitSurveyResponse,
-        getSurveyResponses,
-
+    getSurveyResponses,
+    getSurveyAnalytics,
 };
