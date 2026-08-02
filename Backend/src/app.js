@@ -23,3 +23,4 @@ app.use("/api/auth", authRoutes);
 app.use("/api/surveys", surveyRoutes);
 
 module.exports = app;
+
