@@ -1,8 +1,57 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded",async function () {
     const toggleButtons = document.querySelectorAll(".toggle-password");
     const loginForm = document.querySelector("#login-form");
     const signupForm = document.querySelector("#signup-form");
+    const authPage = document.querySelector(".auth-page");
 
+const existingToken =
+    localStorage.getItem("voxintelToken");
+
+if (existingToken) {
+    try {
+        const response = await fetch(
+            "http://localhost:5000/api/auth/me",
+            {
+                method: "GET",
+
+                headers: {
+                    Authorization:
+                        `Bearer ${existingToken}`
+                }
+            }
+        );
+
+        const data = await response.json();
+
+        if (
+            response.ok &&
+            data.success &&
+            data.user
+        ) {
+            window.location.replace(
+                "dashboard.html"
+            );
+
+            return;
+        }
+
+        if (
+            response.status === 401 ||
+            response.status === 403
+        ) {
+            localStorage.removeItem(
+                "voxintelToken"
+            );
+        }
+    } catch (error) {
+        console.error(
+            "Existing session verification failed:",
+            error
+        );
+    }
+}
+
+authPage?.removeAttribute("hidden");
     // ==========================================
     // Password visibility
     // ==========================================
@@ -131,6 +180,7 @@ document.addEventListener("DOMContentLoaded", function () {
             input.addEventListener("input", function () {
                 clearError(input);
                 clearSuccess(form);
+                clearFormError(form)
             });
         });
     }
@@ -495,4 +545,5 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             });
     }
-});
+}
+);
