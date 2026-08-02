@@ -67,8 +67,43 @@ async function getUserSurveys(request, response) {
         });
     }
 }
+async function getSurveyById(request, response) {
+    try {
+        const survey = await Survey.findOne({
+            _id: request.params.surveyId,
+            owner: request.user._id,
+        });
+
+        if (!survey) {
+            return response.status(404).json({
+                success: false,
+                message: "Survey not found",
+            });
+        }
+
+        return response.status(200).json({
+            success: true,
+            survey,
+        });
+    } catch (error) {
+        console.error("Survey retrieval failed:", error.message);
+
+        if (error.name === "CastError") {
+            return response.status(400).json({
+                success: false,
+                message: "Invalid survey ID",
+            });
+        }
+
+        return response.status(500).json({
+            success: false,
+            message: "Unable to retrieve survey",
+        });
+    }
+}
 
 module.exports = {
     createSurvey,
     getUserSurveys,
+    getSurveyById,
 };
