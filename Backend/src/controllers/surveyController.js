@@ -101,9 +101,89 @@ async function getSurveyById(request, response) {
         });
     }
 }
+async function updateDraftSurvey(request, response) {
+    try {
+        const survey = await Survey.findOne({
+            _id: request.params.surveyId,
+            owner: request.user._id,
+        });
+
+        if (!survey) {
+            return response.status(404).json({
+                success: false,
+                message: "Survey not found",
+            });
+        }
+
+        if (survey.status !== "draft") {
+            return response.status(409).json({
+                success: false,
+                message: "Only draft surveys can be updated",
+            });
+        }
+
+        const editableFields = [
+            "title",
+            "description",
+            "category",
+            "questions",
+        ];
+
+        const suppliedFields = editableFields.filter((field) =>
+            Object.prototype.hasOwnProperty.call(
+                request.body || {},
+                field
+            )
+        );
+
+        if (suppliedFields.length === 0) {
+            return response.status(400).json({
+                success: false,
+                message: "At least one editable field is required",
+            });
+        }
+
+        for (const field of suppliedFields) {
+            survey[field] = request.body[field];
+        }
+
+        await survey.save();
+
+        return response.status(200).json({
+            success: true,
+            message: "Survey updated successfully",
+            survey,
+        });
+    } catch (error) {
+        console.error("Survey update failed:", error.message);
+
+        if (error.name === "CastError") {
+            return response.status(400).json({
+                success: false,
+                message: "Invalid survey ID",
+            });
+        }
+
+        if (error.name === "ValidationError") {
+            const firstValidationError =
+                Object.values(error.errors)[0];
+
+            return response.status(400).json({
+                success: false,
+                message: firstValidationError.message,
+            });
+        }
+
+        return response.status(500).json({
+            success: false,
+            message: "Unable to update survey",
+        });
+    }
+}
 
 module.exports = {
     createSurvey,
     getUserSurveys,
     getSurveyById,
+    updateDraftSurvey,
 };
