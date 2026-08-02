@@ -280,7 +280,43 @@ async function deleteDraftSurvey(request, response) {
         });
     }
 }
+async function getPublishedSurvey(request, response) {
+    try {
+        const survey = await Survey.findOne({
+            _id: request.params.surveyId,
+            status: "published",
+        }).select("-owner");
 
+        if (!survey) {
+            return response.status(404).json({
+                success: false,
+                message: "Published survey not found",
+            });
+        }
+
+        return response.status(200).json({
+            success: true,
+            survey,
+        });
+    } catch (error) {
+        console.error(
+            "Published survey retrieval failed:",
+            error.message
+        );
+
+        if (error.name === "CastError") {
+            return response.status(400).json({
+                success: false,
+                message: "Invalid survey ID",
+            });
+        }
+
+        return response.status(500).json({
+            success: false,
+            message: "Unable to retrieve published survey",
+        });
+    }
+}
 module.exports = {
     createSurvey,
     getUserSurveys,
@@ -288,4 +324,5 @@ module.exports = {
     updateDraftSurvey,
     publishSurvey,
     deleteDraftSurvey,
+    getPublishedSurvey,
 };
