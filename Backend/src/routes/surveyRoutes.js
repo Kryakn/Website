@@ -13,6 +13,7 @@ const {
 
 const {
     submitSurveyResponse,
+    getSurveyResponses,
 } = require("../controllers/responseController");
 
 const router = express.Router();
@@ -26,6 +27,11 @@ router.post(
     submitSurveyResponse
 );
 
+router.get(
+    "/:surveyId/responses",
+    protect,
+    getSurveyResponses
+);
 router.get("/:surveyId", protect, getSurveyById);
 router.patch("/:surveyId", protect, updateDraftSurvey);
 router.patch("/:surveyId/publish", protect, publishSurvey);

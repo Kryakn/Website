@@ -163,6 +163,56 @@ async function submitSurveyResponse(request, response) {
     }
 }
 
+async function getSurveyResponses(request, response) {
+    try {
+        const { surveyId } = request.params;
+
+        if (!mongoose.isValidObjectId(surveyId)) {
+            return response.status(400).json({
+                success: false,
+                message: "Invalid survey ID",
+            });
+        }
+
+        const survey = await Survey.findOne({
+            _id: surveyId,
+            owner: request.user._id,
+        }).select("_id title status questions");
+
+        if (!survey) {
+            return response.status(404).json({
+                success: false,
+                message: "Survey not found",
+            });
+        }
+
+        const responses = await SurveyResponse.find({
+            survey: survey._id,
+        }).sort({
+            createdAt: -1,
+        });
+
+        return response.status(200).json({
+            success: true,
+            count: responses.length,
+            survey,
+            responses,
+        });
+    } catch (error) {
+        console.error(
+            "Survey response retrieval failed:",
+            error.message
+        );
+
+        return response.status(500).json({
+            success: false,
+            message: "Unable to retrieve survey responses",
+        });
+    }
+}
+
 module.exports = {
     submitSurveyResponse,
+        getSurveyResponses,
+
 };
