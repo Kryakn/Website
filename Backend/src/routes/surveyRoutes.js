@@ -5,7 +5,8 @@ const {
     getUserSurveys,
     getSurveyById,
     updateDraftSurvey,
-     publishSurvey,
+    publishSurvey,
+    deleteDraftSurvey,
 } = require("../controllers/surveyController");
 
 const router = express.Router();
@@ -15,5 +16,6 @@ router.get("/", protect, getUserSurveys);
 router.get("/:surveyId", protect, getSurveyById);
 router.patch("/:surveyId", protect, updateDraftSurvey);
 router.patch("/:surveyId/publish", protect, publishSurvey);
+router.delete("/:surveyId", protect, deleteDraftSurvey);
 
 module.exports = router;

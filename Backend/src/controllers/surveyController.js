@@ -237,6 +237,49 @@ async function publishSurvey(request, response) {
         });
     }
 }
+async function deleteDraftSurvey(request, response) {
+    try {
+        const survey = await Survey.findOne({
+            _id: request.params.surveyId,
+            owner: request.user._id,
+        });
+
+        if (!survey) {
+            return response.status(404).json({
+                success: false,
+                message: "Survey not found",
+            });
+        }
+
+        if (survey.status !== "draft") {
+            return response.status(409).json({
+                success: false,
+                message: "Only draft surveys can be deleted",
+            });
+        }
+
+        await survey.deleteOne();
+
+        return response.status(200).json({
+            success: true,
+            message: "Survey deleted successfully",
+        });
+    } catch (error) {
+        console.error("Survey deletion failed:", error.message);
+
+        if (error.name === "CastError") {
+            return response.status(400).json({
+                success: false,
+                message: "Invalid survey ID",
+            });
+        }
+
+        return response.status(500).json({
+            success: false,
+            message: "Unable to delete survey",
+        });
+    }
+}
 
 module.exports = {
     createSurvey,
@@ -244,4 +287,5 @@ module.exports = {
     getSurveyById,
     updateDraftSurvey,
     publishSurvey,
+    deleteDraftSurvey,
 };
