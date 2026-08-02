@@ -180,7 +180,7 @@ authPage?.removeAttribute("hidden");
             input.addEventListener("input", function () {
                 clearError(input);
                 clearSuccess(form);
-                clearFormError(form)
+                clearFormError(form);
             });
         });
     }
