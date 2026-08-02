@@ -1,4 +1,75 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded",async function () {
+        const appShell = document.querySelector(".app-shell");
+
+    const token = localStorage.getItem("voxintelToken");
+
+    if (!token) {
+        window.location.replace("login.html");
+        return;
+    }
+
+    try {
+        const response = await fetch(
+            "http://localhost:5000/api/auth/me",
+            {
+                method: "GET",
+
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
+        );
+
+        const data = await response.json();
+
+        if (
+            !response.ok ||
+            !data.success ||
+            !data.user
+        ) {
+            localStorage.removeItem("voxintelToken");
+            window.location.replace("login.html");
+            return;
+        }
+
+        const fullName = data.user.fullName.trim();
+
+        const initials = fullName
+            .split(/\s+/)
+            .filter(Boolean)
+            .slice(0, 2)
+            .map(function (namePart) {
+                return namePart.charAt(0);
+            })
+            .join("")
+            .toUpperCase();
+
+        const userNameElement = document.querySelector(
+            ".user-information strong"
+        );
+
+        const userAvatarElement = document.querySelector(
+            ".user-avatar"
+        );
+
+        if (userNameElement) {
+            userNameElement.textContent = fullName;
+        }
+
+        if (userAvatarElement) {
+            userAvatarElement.textContent = initials;
+        }
+
+        appShell?.removeAttribute("hidden");
+    } catch (error) {
+        console.error(
+            "Session verification failed:",
+            error
+        );
+
+        window.location.replace("login.html");
+        return;
+    }
     const sidebar = document.querySelector(".app-sidebar");
     const sidebarToggle = document.querySelector(".sidebar-toggle");
     const sidebarOverlay = document.querySelector(".sidebar-overlay");
