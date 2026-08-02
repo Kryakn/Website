@@ -73,6 +73,16 @@ document.addEventListener("DOMContentLoaded",async function () {
     const sidebar = document.querySelector(".app-sidebar");
     const sidebarToggle = document.querySelector(".sidebar-toggle");
     const sidebarOverlay = document.querySelector(".sidebar-overlay");
+    const logoutLink = document.querySelector("[data-logout]");
+    function logoutUser(event) {
+    event.preventDefault();
+
+    localStorage.removeItem("voxintelToken");
+
+    window.location.replace("login.html");
+}
+
+logoutLink?.addEventListener("click", logoutUser);
     const sidebarCloseButtons =
         document.querySelectorAll("[data-sidebar-close]");
 
