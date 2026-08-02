@@ -45,7 +45,30 @@ async function createSurvey(request, response) {
         });
     }
 }
+async function getUserSurveys(request, response) {
+    try {
+        const surveys = await Survey.find({
+            owner: request.user._id,
+        }).sort({
+            createdAt: -1,
+        });
+
+        return response.status(200).json({
+            success: true,
+            count: surveys.length,
+            surveys,
+        });
+    } catch (error) {
+        console.error("Survey listing failed:", error.message);
+
+        return response.status(500).json({
+            success: false,
+            message: "Unable to retrieve surveys",
+        });
+    }
+}
 
 module.exports = {
     createSurvey,
+    getUserSurveys,
 };
