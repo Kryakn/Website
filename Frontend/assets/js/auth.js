@@ -99,31 +99,31 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function showFormError(form, message) {
-    let errorElement = form.querySelector(
-        ".form-api-error"
-    );
+        let errorElement = form.querySelector(
+            ".form-api-error"
+        );
 
-    if (!errorElement) {
-        errorElement = document.createElement("p");
-        errorElement.className =
-            "form-error form-api-error";
-        errorElement.setAttribute("role", "alert");
+        if (!errorElement) {
+            errorElement = document.createElement("p");
+            errorElement.className =
+                "form-error form-api-error";
+            errorElement.setAttribute("role", "alert");
 
-        form.appendChild(errorElement);
+            form.appendChild(errorElement);
+        }
+
+        errorElement.textContent = message;
     }
 
-    errorElement.textContent = message;
-}
+    function clearFormError(form) {
+        const errorElement = form.querySelector(
+            ".form-api-error"
+        );
 
-function clearFormError(form) {
-    const errorElement = form.querySelector(
-        ".form-api-error"
-    );
-
-    if (errorElement) {
-        errorElement.remove();
+        if (errorElement) {
+            errorElement.remove();
+        }
     }
-}
     function enableLiveErrorClearing(form) {
         const inputs = form.querySelectorAll("input");
 
@@ -142,236 +142,357 @@ function clearFormError(form) {
     if (loginForm) {
         enableLiveErrorClearing(loginForm);
 
-        loginForm.addEventListener("submit", function (event) {
-            event.preventDefault();
-            clearSuccess(loginForm);
+        loginForm.addEventListener(
+            "submit",
+            async function (event) {
+                event.preventDefault();
 
-            const emailInput = loginForm.querySelector("#email");
-            const passwordInput = loginForm.querySelector("#password");
+                clearSuccess(loginForm);
+                clearFormError(loginForm);
 
-            const email = emailInput.value.trim();
-            const password = passwordInput.value;
+                const emailInput =
+                    loginForm.querySelector("#email");
 
-            let formIsValid = true;
+                const passwordInput =
+                    loginForm.querySelector("#password");
 
-            clearError(emailInput);
-            clearError(passwordInput);
+                const submitButton =
+                    loginForm.querySelector(".auth-btn");
 
-            if (email === "") {
-                showError(emailInput, "Email address is required.");
-                formIsValid = false;
-            } else if (!isValidEmail(email)) {
-                showError(emailInput, "Enter a valid email address.");
-                formIsValid = false;
+                const email = emailInput.value.trim();
+                const password = passwordInput.value;
+
+                let formIsValid = true;
+
+                clearError(emailInput);
+                clearError(passwordInput);
+
+                if (email === "") {
+                    showError(
+                        emailInput,
+                        "Email address is required."
+                    );
+                    formIsValid = false;
+                } else if (!isValidEmail(email)) {
+                    showError(
+                        emailInput,
+                        "Enter a valid email address."
+                    );
+                    formIsValid = false;
+                }
+
+                if (password === "") {
+                    showError(
+                        passwordInput,
+                        "Password is required."
+                    );
+                    formIsValid = false;
+                } else if (password.length < 8) {
+                    showError(
+                        passwordInput,
+                        "Password must contain at least 8 characters."
+                    );
+                    formIsValid = false;
+                }
+
+                if (!formIsValid) {
+                    return;
+                }
+
+                const originalButtonText =
+                    submitButton.textContent;
+
+                let loginCompleted = false;
+
+                submitButton.disabled = true;
+                submitButton.textContent = "Signing In...";
+
+                try {
+                    const response = await fetch(
+                        "http://localhost:5000/api/auth/login",
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+
+                            body: JSON.stringify({
+                                email,
+                                password
+                            })
+                        }
+                    );
+
+                    const data = await response.json();
+
+                    if (!response.ok) {
+                        showFormError(
+                            loginForm,
+                            data.message ||
+                            "Unable to sign in."
+                        );
+                        return;
+                    }
+
+                    if (!data.token) {
+                        showFormError(
+                            loginForm,
+                            "Login succeeded, but no authentication token was received."
+                        );
+                        return;
+                    }
+
+                    localStorage.setItem(
+                        "voxintelToken",
+                        data.token
+                    );
+
+                    loginCompleted = true;
+
+                    showSuccess(
+                        loginForm,
+                        "Login successful. Redirecting to dashboard..."
+                    );
+
+                    passwordInput.value = "";
+                    submitButton.textContent = "Redirecting...";
+
+                    setTimeout(function () {
+                        window.location.replace(
+                            "dashboard.html"
+                        );
+                    }, 2000);
+                } catch (error) {
+                    console.error(
+                        "Login request failed:",
+                        error
+                    );
+
+                    showFormError(
+                        loginForm,
+                        "Cannot connect to the server. Make sure the backend is running."
+                    );
+                } finally {
+                    if (!loginCompleted) {
+                        submitButton.disabled = false;
+                        submitButton.textContent =
+                            originalButtonText;
+                    }
+                }
             }
-
-            if (password === "") {
-                showError(passwordInput, "Password is required.");
-                formIsValid = false;
-            } else if (password.length < 8) {
-                showError(
-                    passwordInput,
-                    "Password must contain at least 8 characters."
-                );
-                formIsValid = false;
-            }
-
-            if (formIsValid) {
-                showSuccess(
-                    loginForm,
-                    "Login validation passed. Backend authentication will be connected later."
-                );
-            }
-        });
+        );
     }
 
     // ==========================================
     // Signup validation
     // ==========================================
 
-if (signupForm) {
-    enableLiveErrorClearing(signupForm);
+    if (signupForm) {
+        enableLiveErrorClearing(signupForm);
 
-    signupForm.addEventListener(
-        "submit",
-        async function (event) {
-            event.preventDefault();
+        signupForm.addEventListener(
+            "submit",
+            async function (event) {
+                event.preventDefault();
 
-            clearSuccess(signupForm);
-            clearFormError(signupForm);
+                clearSuccess(signupForm);
+                clearFormError(signupForm);
 
-            const fullNameInput =
-                signupForm.querySelector("#fullname");
+                const fullNameInput =
+                    signupForm.querySelector("#fullname");
 
-            const emailInput =
-                signupForm.querySelector("#email");
+                const emailInput =
+                    signupForm.querySelector("#email");
 
-            const passwordInput =
-                signupForm.querySelector("#password");
+                const passwordInput =
+                    signupForm.querySelector("#password");
 
-            const confirmPasswordInput =
-                signupForm.querySelector(
-                    "#confirm-password"
-                );
+                const confirmPasswordInput =
+                    signupForm.querySelector(
+                        "#confirm-password"
+                    );
 
-            const submitButton =
-                signupForm.querySelector(".auth-btn");
+                const submitButton =
+                    signupForm.querySelector(".auth-btn");
 
-            const fullName = fullNameInput.value.trim();
-            const email = emailInput.value.trim();
-            const password = passwordInput.value;
-            const confirmPassword =
-                confirmPasswordInput.value;
+                const fullName = fullNameInput.value.trim();
+                const email = emailInput.value.trim();
+                const password = passwordInput.value;
+                const confirmPassword =
+                    confirmPasswordInput.value;
 
-            let formIsValid = true;
+                let formIsValid = true;
 
-            clearError(fullNameInput);
-            clearError(emailInput);
-            clearError(passwordInput);
-            clearError(confirmPasswordInput);
+                clearError(fullNameInput);
+                clearError(emailInput);
+                clearError(passwordInput);
+                clearError(confirmPasswordInput);
 
-            if (fullName === "") {
-                showError(
-                    fullNameInput,
-                    "Full name is required."
-                );
+                if (fullName === "") {
+                    showError(
+                        fullNameInput,
+                        "Full name is required."
+                    );
 
-                formIsValid = false;
-            } else if (fullName.length < 2) {
-                showError(
-                    fullNameInput,
-                    "Full name must contain at least 2 characters."
-                );
+                    formIsValid = false;
+                } else if (fullName.length < 2) {
+                    showError(
+                        fullNameInput,
+                        "Full name must contain at least 2 characters."
+                    );
 
-                formIsValid = false;
-            }
+                    formIsValid = false;
+                }
 
-            if (email === "") {
-                showError(
-                    emailInput,
-                    "Email address is required."
-                );
+                if (email === "") {
+                    showError(
+                        emailInput,
+                        "Email address is required."
+                    );
 
-                formIsValid = false;
-            } else if (!isValidEmail(email)) {
-                showError(
-                    emailInput,
-                    "Enter a valid email address."
-                );
+                    formIsValid = false;
+                } else if (!isValidEmail(email)) {
+                    showError(
+                        emailInput,
+                        "Enter a valid email address."
+                    );
 
-                formIsValid = false;
-            }
+                    formIsValid = false;
+                }
 
-            if (password === "") {
-                showError(
-                    passwordInput,
-                    "Password is required."
-                );
+                if (password === "") {
+                    showError(
+                        passwordInput,
+                        "Password is required."
+                    );
 
-                formIsValid = false;
-            } else if (password.length < 8) {
-                showError(
-                    passwordInput,
-                    "Password must contain at least 8 characters."
-                );
+                    formIsValid = false;
+                } else if (password.length < 8) {
+                    showError(
+                        passwordInput,
+                        "Password must contain at least 8 characters."
+                    );
 
-                formIsValid = false;
-            }
+                    formIsValid = false;
+                }
 
-            if (confirmPassword === "") {
-                showError(
-                    confirmPasswordInput,
-                    "Please confirm your password."
-                );
+                if (confirmPassword === "") {
+                    showError(
+                        confirmPasswordInput,
+                        "Please confirm your password."
+                    );
 
-                formIsValid = false;
-            } else if (confirmPassword !== password) {
-                showError(
-                    confirmPasswordInput,
-                    "Passwords do not match."
-                );
+                    formIsValid = false;
+                } else if (confirmPassword !== password) {
+                    showError(
+                        confirmPasswordInput,
+                        "Passwords do not match."
+                    );
 
-                formIsValid = false;
-            }
+                    formIsValid = false;
+                }
 
-            if (!formIsValid) {
-                return;
-            }
-
-            const originalButtonText =
-                submitButton.textContent;
-
-            submitButton.disabled = true;
-            submitButton.textContent =
-                "Creating Account...";
-
-            try {
-                const response = await fetch(
-                    "http://localhost:5000/api/auth/register",
-                    {
-                        method: "POST",
-
-                        headers: {
-                            "Content-Type":
-                                "application/json"
-                        },
-
-                        body: JSON.stringify({
-                            fullName,
-                            email,
-                            password,
-                            confirmPassword
-                        })
-                    }
-                );
-
-                const data = await response.json();
-
-                if (!response.ok) {
-                    const errorMessage =
-                        data.message ||
-                        "Unable to create your account.";
-
-                    if (response.status === 409) {
-                        showError(
-                            emailInput,
-                            errorMessage
-                        );
-
-                        emailInput.focus();
-                    } else {
-                        showFormError(
-                            signupForm,
-                            errorMessage
-                        );
-                    }
-
+                if (!formIsValid) {
                     return;
                 }
 
-                showSuccess(
-                    signupForm,
-                    data.message ||
-                        "Account created successfully. You can now sign in."
-                );
+                const originalButtonText =
+                    submitButton.textContent;
 
-                signupForm.reset();
-            } catch (error) {
-                console.error(
-                    "Signup request failed:",
-                    error
-                );
-
-                showFormError(
-                    signupForm,
-                    "Cannot connect to the server. Make sure the backend is running."
-                );
-            } finally {
-                submitButton.disabled = false;
+                submitButton.disabled = true;
                 submitButton.textContent =
-                    originalButtonText;
-            }
-        }
-    );
-}
+                    "Creating Account...";
+                let signupCompleted = false;
+
+                try {
+                    const response = await fetch(
+                        "http://localhost:5000/api/auth/register",
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body: JSON.stringify({
+                                fullName,
+                                email,
+                                password,
+                                confirmPassword
+                            })
+                        }
+                    );
+
+                    const data = await response.json();
+
+                    if (!response.ok) {
+                        const errorMessage =
+                            data.message ||
+                            "Unable to create your account.";
+
+                        if (response.status === 409) {
+                            showError(
+                                emailInput,
+                                errorMessage
+                            );
+
+                            emailInput.focus();
+                        } else {
+                            showFormError(
+                                signupForm,
+                                errorMessage
+                            );
+                        }
+
+                        return;
+                    }
+
+                    if (!data.token) {
+                        showFormError(
+                            signupForm,
+                            "Account was created, but automatic login could not be completed."
+                        );
+
+                        return;
+                    }
+
+                    localStorage.setItem(
+                        "voxintelToken",
+                        data.token
+                    );
+
+                    signupCompleted = true;
+
+                    showSuccess(
+                        signupForm,
+                        "Account created successfully. Redirecting to dashboard..."
+                    );
+
+                    signupForm.reset();
+                    submitButton.textContent = "Redirecting...";
+
+                    setTimeout(function () {
+                        window.location.replace("dashboard.html");
+                    }, 2000);
+                } catch (error) {
+                    console.error(
+                        "Signup request failed:",
+                        error
+                    );
+
+                    showFormError(
+                        signupForm,
+                        "Cannot connect to the server. Make sure the backend is running."
+                    );
+                } finally {
+                    if (!signupCompleted) {
+                        submitButton.disabled = false;
+                        submitButton.textContent =
+                            originalButtonText;
+                    }
+                }
+            });
+    }
 });
