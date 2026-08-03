@@ -8,7 +8,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     <link rel="stylesheet" href="assets/css/variables.css">
@@ -32,28 +34,38 @@
             </div>
 
             <nav class="sidebar-navigation" aria-label="Application navigation">
-                <a href="dashboard.html" class="sidebar-link"><i class="fa-solid fa-house"></i><span>Dashboard</span></a>
-                <a href="create-survey.html" class="sidebar-link"><i class="fa-solid fa-square-plus"></i><span>Create Survey</span></a>
-                <a href="my-surveys.html" class="sidebar-link"><i class="fa-solid fa-clipboard-list"></i><span>My Surveys</span></a>
-                <a href="results.html" class="sidebar-link active"><i class="fa-solid fa-chart-column"></i><span>Results</span></a>
+                <a href="dashboard.html" class="sidebar-link"><i
+                        class="fa-solid fa-house"></i><span>Dashboard</span></a>
+                <a href="create-survey.html" class="sidebar-link"><i class="fa-solid fa-square-plus"></i><span>Create
+                        Survey</span></a>
+                <a href="my-surveys.html" class="sidebar-link"><i class="fa-solid fa-clipboard-list"></i><span>My
+                        Surveys</span></a>
+                <a href="results.html" class="sidebar-link active"><i
+                        class="fa-solid fa-chart-column"></i><span>Results</span></a>
             </nav>
 
             <div class="sidebar-footer">
                 <a href="index.html" class="sidebar-link"><i class="fa-solid fa-globe"></i><span>View Website</span></a>
-                <a href="login.html" class="sidebar-link" data-logout><i class="fa-solid fa-arrow-right-from-bracket"></i><span>Sign Out</span></a>
+                <a href="login.html" class="sidebar-link" data-logout><i
+                        class="fa-solid fa-arrow-right-from-bracket"></i><span>Sign Out</span></a>
             </div>
         </aside>
 
         <main class="app-main">
             <header class="app-header">
                 <div class="app-header-left">
-                    <button type="button" class="sidebar-toggle" aria-label="Open sidebar" aria-controls="app-sidebar" aria-expanded="false">
+                    <button type="button" class="sidebar-toggle" aria-label="Open sidebar" aria-controls="app-sidebar"
+                        aria-expanded="false">
                         <i class="fa-solid fa-bars"></i>
                     </button>
-                    <div><h1>Survey Results</h1><p>Review responses and audience insights.</p></div>
+                    <div>
+                        <h1>Survey Results</h1>
+                        <p>Review responses and audience insights.</p>
+                    </div>
                 </div>
                 <div class="app-header-actions">
-                    <a href="my-surveys.html" class="results-back-link"><i class="fa-solid fa-arrow-left"></i>My Surveys</a>
+                    <a href="my-surveys.html" class="results-back-link"><i class="fa-solid fa-arrow-left"></i>My
+                        Surveys</a>
                     <div class="user-avatar">AS</div>
                 </div>
             </header>
@@ -65,7 +77,8 @@
                         <h2 id="results-title">Loading survey...</h2>
                         <p id="results-description">Reading the survey from VoxIntel.</p>
                     </div>
-                    <button type="button" class="results-export-button" disabled title="Requires the owner analytics API">
+                    <button type="button" class="results-export-button" disabled
+                        title="Requires the owner analytics API">
                         <i class="fa-solid fa-download"></i>Export Results
                     </button>
                 </div>
@@ -85,35 +98,79 @@
                     </article>
                     <article class="results-stat-card">
                         <div class="results-stat-icon"><i class="fa-solid fa-chart-line"></i></div>
-                        <div><span>Completion rate</span><strong>—</strong></div>
+                        <div>
+                            <span>Completion rate</span>
+                            <strong id="results-completion-rate">—</strong>
+                        </div>
                     </article>
                 </div>
 
                 <div class="results-content-grid">
                     <article class="results-panel">
                         <div class="results-panel-header">
-                            <div><h2>Survey structure</h2><p>Questions currently included in this survey.</p></div>
+                            <div>
+                                <h2>Survey structure</h2>
+                                <p>Questions currently included in this survey.</p>
+                            </div>
                         </div>
                         <div class="results-question-list" id="results-question-list">
                             <p>Loading questions...</p>
                         </div>
                     </article>
 
-                    <article class="results-panel results-summary-panel">
+                    <article c<article class="results-panel results-summary-panel">
                         <div class="results-panel-header">
-                            <div><h2>Response analytics</h2><p>Stored-response calculations.</p></div>
-                            <div class="results-ai-icon"><i class="fa-solid fa-chart-pie"></i></div>
-                        </div>
-                        <div class="results-ai-content" id="analytics-state">
-                            <strong>Analytics data is not exposed yet</strong>
-                            <p>The current backend accepts responses but has no owner endpoint for retrieving counts, answer distributions, or text responses.</p>
-                            <div class="results-insight">
-                                <i class="fa-solid fa-circle-info"></i>
-                                <span>The frontend intentionally shows no fabricated results.</span>
+                            <div>
+                                <h2>Response analytics</h2>
+                                <p>Live calculations from submitted responses.</p>
                             </div>
+
+                            <div class="results-ai-icon">
+                                <i class="fa-solid fa-chart-pie"></i>
+                            </div>
+                        </div>
+
+                        <div class="results-ai-content" id="analytics-state" role="status" aria-live="polite">
+                            <strong>Loading analytics...</strong>
+                            <p>
+                                VoxIntel is calculating the survey results.
+                            </p>
                         </div>
                     </article>
                 </div>
+                <section class="results-panel" id="responses-over-time-section"
+                    aria-labelledby="responses-over-time-title" hidden>
+                    <div class="results-panel-header">
+                        <div>
+                            <h2 id="responses-over-time-title">
+                                Responses over time
+                            </h2>
+                            <p>
+                                Number of survey submissions received each day.
+                            </p>
+                        </div>
+
+                        <span id="responses-over-time-total">0 responses</span>
+                    </div>
+
+                    <div class="results-bar-chart" id="responses-over-time-chart"></div>
+                </section>
+
+                <section id="question-analytics-section" aria-labelledby="question-analytics-title" hidden>
+                    <div class="results-section-heading">
+                        <div>
+                            <h2 id="question-analytics-title">
+                                Question analytics
+                            </h2>
+                            <p>
+                                Response counts, distributions and written answers
+                                for each question.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="results-question-analytics" id="question-analytics-list"></div>
+                </section>
             </div>
         </main>
     </div>
